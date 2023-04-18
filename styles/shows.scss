@@ -1,0 +1,628 @@
+@use "./partials/global" as *;
+@use "./partials/variables" as *;
+@use "./partials/font" as *;
+@use "./partials/mixin" as *;
+
+.header {
+    background-color: $bandsite-black;
+
+    &__logo {
+        padding-top: 1rem;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+
+        @include tablet {
+            padding: 2rem 5rem 2rem 2rem;
+
+
+            @include desktop {
+                padding: 2.5rem 2.5rem 2.5rem 9rem;
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-around;
+        color: white;
+        width: 100%;
+        margin-bottom: 0;
+        padding-left: 0;
+        padding-bottom: 1rem;
+
+        @include tablet {
+            padding-top: 1rem;
+        }
+
+        @include desktop {
+            padding-top: 1.7rem;
+        }
+    }
+
+    &__nav__item {
+        list-style-type: none;
+        font-family: "Avenir Next LT Pro";
+        color: $mercury;
+
+        @include tablet {
+            margin-right: 3rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        @include desktop {
+            font-weight: 600;
+        }
+    }
+
+    &__nav__item--hover:hover {
+
+        @include tablet {
+            border-bottom: .25rem solid white;
+            padding-bottom: 1rem;
+            width: 50%;
+            color: $mercury;
+            cursor: pointer;
+
+        }
+
+        @include desktop {
+            border-bottom: .25rem solid white;
+            padding-bottom: 3rem;
+            width: 50%;
+            color: $mercury;
+            cursor: pointer;
+
+        }
+    }
+
+
+    @include tablet {
+        display: inline-flex;
+        width: 100%;
+        height: 4.7rem;
+    }
+
+    @include desktop {
+        display: inline-flex;
+        width: 100%;
+        height: 7.4rem;
+    }
+
+
+}
+
+.underline {
+    border-bottom: 5px solid white;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    top: 5.4rem;
+
+
+    @include tablet {
+        display: none;
+    }
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.header__nav__item--current {
+    color: white;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+#navbar .active {
+    @include tablet {
+        border-bottom: 5px solid white;
+        padding-bottom: 1.1rem;
+    }
+
+    @include desktop {
+        border-bottom: 5px solid white;
+        padding-bottom: 3.1rem;
+    }
+}
+
+.hero {
+    height: 22rem;
+    background-image: url("../assets/images/hero-shows.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+    &__image {
+        height: 15rem;
+        width: 100%;
+
+    }
+
+    &__image--overlay {
+        background-color: $bandsite-black;
+        opacity: 0.5;
+        height: 22rem;
+        width: 100%;
+        margin: 0 auto;
+        position: absolute;
+
+        @include tablet {
+            height: 40rem;
+        }
+
+        @include desktop {
+            height: 45rem;
+        }
+    }
+
+    &__text--top {
+        position: absolute;
+        top: 6rem;
+        padding: 1rem;
+        color: white;
+        z-index: 1;
+        font-weight: 600;
+        font-family: "Avenir Next LT Pro";
+
+        @include tablet {
+            font-size: 2rem;
+            font-weight: 500;
+            top: 9rem;
+            left: 1.5rem;
+        }
+
+        @include desktop {
+            font-size: 2rem;
+            font-weight: 500;
+            top: 19rem;
+            left: 3rem;
+        }
+
+    }
+
+    &__text--mid {
+        position: absolute;
+        top: 8rem;
+        padding: 1rem;
+        color: white;
+        z-index: 1;
+        font-weight: 600;
+        font-family: "Avenir Next LT Pro";
+        font-size: 2rem;
+        padding-bottom: 1rem;
+
+        @include tablet {
+            font-size: 5rem;
+            font-weight: 600;
+            top: 10rem;
+            left: 1rem;
+        }
+
+        @include desktop {
+            font-size: 5rem;
+            font-weight: 600;
+            top: 19rem;
+            left: 3rem;
+        }
+    }
+
+    &__text--bot {
+        position: absolute;
+        top: 10.5rem;
+        padding: 1rem;
+        color: white;
+        z-index: 1;
+        font-weight: 600;
+        font-family: "Avenir Next LT Pro";
+        font-size: 2rem;
+
+        @include tablet {
+            font-size: 5rem;
+            font-weight: 600;
+            top: 15rem;
+            left: 1rem;
+        }
+
+        @include desktop {
+            font-size: 5rem;
+            font-weight: 600;
+            top: 24rem;
+            left: 3rem;
+        }
+    }
+
+    @include tablet {
+        height: 40rem;
+    }
+
+    @include desktop {
+        height: 45rem;
+    }
+}
+
+.soundcloud {
+    z-index: 5;
+    position: absolute;
+    top: 16rem;
+    left: 1.2rem;
+    width: 94%;
+
+    @include tablet {
+        top: 30rem;
+        left: 3.2rem;
+        width: 55%;
+    }
+
+    @include desktop {
+        top: 24rem;
+        left: 53.2rem;
+        width: 35%;
+    }
+}
+
+.conversation__text {
+    padding: 1rem;
+}
+
+.shows {
+    border-bottom: 1px solid $mercury;
+    padding: 1rem;
+
+
+    &__heading__text {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        padding-left: 1rem;
+
+        @include desktop {
+            padding-left: 5rem;
+        }
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+
+        &--style {
+            background-color: $bandsite-black;
+            color: white;
+            padding: 1rem;
+            width: 90%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.15rem;
+        }
+
+        @include tablet {
+            width: 30%;
+        }
+
+        @include desktop {
+            width: 30%;
+        }
+    }
+
+    &--bolded {
+        font-weight: 600;
+
+    }
+
+    &--mercury {
+        color: $mercury;
+        font-weight: 600;
+
+        &--visible {
+            color: $mercury;
+            font-weight: 600;
+            padding-left: 1rem;
+        }
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__choices {
+        padding-left: 1rem;
+        border-bottom: 1px solid $mercury;
+
+        &__heading {
+            font-weight: 600;
+            padding: 20rem 0rem 0rem 1rem;
+        }
+
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    @include desktop {
+        width: 70%;
+        padding-left: 25rem;
+    }
+}
+
+.shows--mercury--visble {
+    color: $mercury;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+.shows--mercury--visble--padding {
+    padding-left: 3rem;
+}
+
+
+
+.footer {
+    background-color: $bandsite-black;
+    height: 100%;
+    width: 100%;
+
+    &__heading {
+        font-family: "Avenir Next LT Pro";
+        margin: 0;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 1rem 0rem 0rem 1rem;
+
+        @include tablet {
+            padding: 4.5rem 3rem 3rem 3rem;
+            font-size: 2rem;
+        }
+
+        @include desktop {
+            padding: 4rem 1rem 3rem 5rem;
+            font-size: 3rem;
+        }
+    }
+
+
+    &__icons {
+        width: 35%;
+        display: flex;
+        justify-content: space-around;
+        padding-left: .5rem;
+
+        &__logo {
+            padding-top: 1.5rem;
+            width: 2rem;
+            height: 2rem;
+            padding-bottom: 2rem;
+
+            @include tablet {
+                padding: 1.8rem;
+                padding-left: 5rem;
+            }
+        }
+
+        @include tablet {
+            width: 19%;
+            padding: 2rem;
+            padding-top: 2.5rem;
+        }
+
+    }
+
+    &__icons__logo {
+        padding-top: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        padding-bottom: 2rem;
+
+        @include tablet {
+            padding: 1.8rem;
+            padding-left: 0rem;
+        }
+    }
+
+    &__social--name {
+        font-family: "Avenir Next LT Pro";
+        font-size: 1.1rem;
+        margin: 0;
+        padding-left: 1rem;
+        color: white;
+        line-height: 1.5rem;
+        font-weight: 600;
+    }
+
+    &__social--address {
+        font-family: "Avenir Next LT Pro";
+        font-size: 1.1rem;
+        margin: 0;
+        padding-left: 1rem;
+        color: white;
+        line-height: 1.5rem;
+        font-weight: 400;
+    }
+
+    &__social--address--padding {
+        font-family: "Avenir Next LT Pro";
+        font-size: 1.1rem;
+        margin: 0;
+        padding-left: 1rem;
+        color: white;
+        line-height: 1.5rem;
+        font-weight: 400;
+        padding-top: 1rem;
+
+        @include tablet {
+            padding-top: 2rem;
+        }
+    }
+
+    &__social__email {
+        font-family: "Avenir Next LT Pro";
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 2rem 0rem 2rem 1rem;
+        color: white;
+        line-height: 1.5rem;
+        font-weight: 400;
+
+        @include tablet {
+            padding-top: 2rem;
+        }
+    }
+
+
+    &__logo {
+        padding-top: 4rem;
+        padding-left: 1rem;
+        width: 35%;
+        height: 2rem;
+
+        @include tablet {
+            display: none;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &__copyright {
+        font-family: "Avenir Next LT Pro";
+        margin: 0;
+        color: white;
+        padding: 1rem 0 1rem 1rem;
+
+        @include tablet {
+            padding: 4rem 0rem 3rem 8vw;
+            text-align: left;
+
+        }
+
+        @include desktop {
+            padding-left: 6.1rem;
+            text-align: left;
+        }
+    }
+}
+
+//empty div in order to flex footer
+
+.footer__flex {
+
+    @include tablet {
+        display: inline-flex;
+        width: 60%;
+    }
+
+    @include desktop {
+        padding-left: 0rem;
+    }
+}
+
+// below is techinally a part of the footer but have div with class in order to flex
+
+.contact__section {
+    @include tablet {
+        display: flex;
+        justify-content: space-around;
+        padding-left: 2rem;
+    }
+
+    @include desktop {
+        width: 70%;
+        padding-left: 2.7rem;
+    }
+
+}
+
+//CSS for Diving Deeper taking grayscale off on hover
+
+.gallery__images:hover {
+    filter: none;
+
+}
+
+.gallery__images--padding:hover {
+    filter: none;
+
+}
+
+//CSS for Diving Deeper for adding email link
+.email__link {
+    text-decoration: none;
+}
+
+//Second bandsite logo img that is hidden while in mobile and then appears for tablet breakpoint
+
+.footer__logo--hidden {
+    display: none;
+
+    @include tablet {
+        float: right;
+        display: block;
+        padding-top: 5rem;
+        padding-right: 5rem;
+        width: 10%;
+    }
+
+    @include desktop {
+        float: right;
+        display: block;
+        padding-top: 5rem;
+        padding-right: 5rem;
+        width: 10%;
+    }
+}
+
+//CSS below ensures that the position of elements 'date venue and location headings'
+//changes correctly to correct position with tablet/desktop view
+
+.date__venue__location--visible {
+    display: none;
+
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
+
+.hidden__div {
+    width: 30%;
+}
+
+.data__padding {
+    margin-top: 1rem;
+    width: 25%;
+}
+
+
+//CSS for style that has an active background color when a shows card is selected. Class name injected by DOM through JS
+
+.shows__choices:hover {
+    background-color: $alabaster;
+    cursor: pointer;
+}
+
+
+.shows__choices .shows__button--style:hover {
+    background-color: #000000;
+}
+
+
+.shows__choices--mercury {
+    background-color: $mercury;
+}
+
+.thumbsUp {
+    size: 10%;
+}

@@ -1,25 +1,9 @@
-.profile-picture-landing-page {
-    border-radius: 50%;
-    object-fit: contain;
-    width: 20%;
-    margin: auto;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    transform: translateY(-5px) scale(1.05);
-    border: 1px solid black;
-    opacity: 0;
-    animation: fade-in 6s ease-out forwards;
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/font" as *;
+@use "../../../styles/partials/mixin" as *;
 
 
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-}
 
 .landing-page {
     opacity: 0;
@@ -102,6 +86,13 @@
     opacity: 0;
     animation: fade-in 5s ease-out forwards;
     cursor: pointer;
+    margin-left: 3rem;
+
+    @include tablet {
+        margin-left: 0;
+    }
+
+
 
 
     @keyframes fade-in {
@@ -235,16 +226,6 @@ a {
     perspective: 1000px;
 }
 
-.profile-picture-landing-page {
-    border-radius: 50%;
-    object-fit: contain;
-    width: 100%;
-    position: relative;
-    transition: transform 0.5s ease-in-out;
-    backface-visibility: hidden;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
 
 
 .profile-picture-container:hover .profile-picture-landing-page {
@@ -271,15 +252,34 @@ a {
     grid-column: 1;
     border-radius: 50%;
     object-fit: contain;
-    width: 100%;
+    width: 300%;
     position: relative;
     transition: transform 0.5s ease-in-out;
     backface-visibility: hidden;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fade-in 6s ease-out forwards;
+
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @include tablet {
+        width: 100%;
+    }
 }
 
+
 .github-logo {
-    width: 100%;
+    width: 300%;
+
     height: 100%;
     object-fit: contain;
 
@@ -291,6 +291,10 @@ a {
     background-color: rgb(235, 234, 230);
     border-radius: 50%;
     padding: 0;
+
+    @include tablet {
+        width: 100%;
+    }
 }
 
 .zoom-effect {
