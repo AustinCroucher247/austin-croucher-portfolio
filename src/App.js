@@ -1,11 +1,21 @@
 import LandingPage from "./Components/LandingPage/LandingPage";
 import './global.scss'
+import NonInteractive from "./Components/NonInteractive/NonInteractive";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AboutMe from "./Components/AboutMe/AboutMe";
+
 
 function App() {
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/nonInteractive" element={<NonInteractive />} />
+        <Route path="/AboutMe" element={<AboutMe />} />
+
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
