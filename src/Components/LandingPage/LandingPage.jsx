@@ -14,16 +14,19 @@ function LandingPage() {
             <body className='landing-page'>
                 <div className="landing-page-container">
                     <h1 className='landing-page-text'>Hello World! My Name is <span className='landing-page-text-name'> Austin Croucher</span></h1>
-                    <div className='profile-picture-container'>
-                        <img className='profile-picture-landing-page' src={ProfilePic} alt="Profile" />
-                        <img
-                            className='github-logo'
-                            src={GitHub}
-                            alt="GitHub Profile"
-                            onClick={openGitHubProfile}
-                            style={{ cursor: 'pointer' }}
-                        />                    </div>
-                    <div className="profile-picture-back"></div>
+                    <div className='test'>
+                        <div className='profile-picture-container'>
+                            <img className='profile-picture-landing-page' src={ProfilePic} alt="Profile" />
+                            <img
+                                className='github-logo'
+                                src={GitHub}
+                                alt="GitHub Profile"
+                                onClick={openGitHubProfile}
+                                style={{ cursor: 'pointer' }}
+                            />
+                        </div>
+                        <div className="profile-picture-back"></div>
+                    </div>
                     <hr className='line-under-picture' />
                 </div>
                 <div className="container">
@@ -46,14 +49,16 @@ function LandingPage() {
                             About Me
                         </button>
                     </Link>
+                    <Link to={'./Interactive'}>
+                        <button className="button" style={{ '--color': '#EAC055' }}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Interactive Portfoilio
+                        </button>
+                    </Link>
 
-                    <button className="button" href="#" style={{ '--color': '#EAC055' }}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Interactive Portfoilio
-                    </button>
                 </div>
             </body>
 
