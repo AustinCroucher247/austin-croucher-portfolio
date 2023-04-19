@@ -1,3 +1,8 @@
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/font" as *;
+@use "../../../styles/partials/mixin" as *;
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -144,4 +149,114 @@
 
 .modal p {
     margin: 20px 0;
+}
+
+.card--img--retrorumble {
+    width: 100%;
+}
+
+.card--img--planetJumper {
+    width: 100%;
+
+}
+
+.about-me-text,
+.projects-text {
+    color: whitesmoke;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation:
+        typing 6.5s steps(40) 0s,
+        blink-caret 1s step-end 0s,
+        change-color 0.5s forwards 1.5s,
+        hide-caret 0.1s forwards 1.5s;
+    /* Add this */
+}
+
+/* Add this keyframes rule */
+@keyframes hide-caret {
+    0% {
+        border-color: orange;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+.wrapper {
+    padding: 100px;
+}
+
+.image--cover {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgb(234, 192, 85);
+    object-fit: cover;
+    object-position: center;
+    animation: fade-in 4s ease-out forwards;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.text--profile--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include desktop {
+        flex-direction: row;
+    }
+}
+
+.about--me--text {
+    width: 50%;
+    padding: 2rem;
+    color: rgb(154, 122, 42);
+    text-align: center;
+
+
+
+    @include desktop {
+        width: 100%;
+        padding: 2rem;
+        color: rgb(154, 122, 42);
+        text-align: center;
+
+    }
+}
+
+.about--me--text--container {
+    display: flex;
+    animation: fade-in 4s ease-out forwards;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @include desktop {
+        display: block;
+
+    }
 }
