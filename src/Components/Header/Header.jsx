@@ -23,11 +23,12 @@ function Header() {
 
                             </div>
                             <div class="menu-items">
-                                <Link to={'/'}> <li><a href="#">Home</a></li></Link>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">blogs</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">contact</a></li>
+
+                                <Link to={'/'}> <li><a href="/">Home</a></li></Link>
+                                <li><a href="/">about</a></li>
+                                <li><a href="/">blogs</a></li>
+                                <li><a href="/">portfolio</a></li>
+                                <li><a href="/">contact</a></li>
                             </div>
                         </div>
                     </div>

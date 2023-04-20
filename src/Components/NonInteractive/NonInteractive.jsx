@@ -6,7 +6,7 @@ import PlanetJumper from '../../assets-portfolio/PlanetJumper.jpg'
 import ArcadeMachine from '../../assets-portfolio/Arcade.avif'
 import Astronaut from '../../assets-portfolio/SpaceAvatarWithWhite.jpg'
 import React, { useState } from 'react';
-import { Link, Element } from 'react-scroll';
+import { Element } from 'react-scroll';
 import { useInView } from 'react-intersection-observer';
 import HTML from '../../assets-portfolio/html-5.png'
 import CSS from '../../assets-portfolio/css-3.png'
@@ -42,6 +42,7 @@ function NonInteractive() {
             smooth: "easeInOutQuart",
         });
     };
+    // eslint-disable-next-line
     const [showModal, setShowModal] = useState(false);
     const handleCardClick = (e, url) => {
         e.preventDefault();
@@ -57,6 +58,7 @@ function NonInteractive() {
             <div className='text--profile--container'>
                 <div class="wrapper">
                     <img
+                        alt='profile'
                         src={ProfilePic}
                         class="image--cover"
                         onClick={handleProfilePicClick}
@@ -142,7 +144,7 @@ function NonInteractive() {
                                 </li>
                             </div>
                             <li>
-                                <a href="" class="card">
+                                <a href="/" class="card">
                                     <img className='card--img--planetJumper' src={PlanetJumper} class="card__image" alt="" />
                                     <div class="card__overlay">
                                         <div class="card__header">
