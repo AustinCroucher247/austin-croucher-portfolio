@@ -121,6 +121,22 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    animation: fade-in 4s ease-out forwards;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @include desktop {
+        display: block;
+
+    }
 }
 
 .card--title {
@@ -200,6 +216,7 @@
     border: 2px solid rgb(234, 192, 85);
     object-fit: cover;
     object-position: center;
+    cursor: pointer;
     animation: fade-in 4s ease-out forwards;
 
     @keyframes fade-in {
@@ -218,23 +235,26 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 
     @include desktop {
         flex-direction: row;
+        padding: 6rem;
     }
 }
 
 .about--me--text {
-    width: 50%;
+    width: 80%;
     padding: 2rem;
     color: rgb(154, 122, 42);
     text-align: center;
-
+    margin: 0 auto;
 
 
     @include desktop {
         width: 100%;
         padding: 2rem;
+        font-size: 1.4rem;
         color: rgb(154, 122, 42);
         text-align: center;
 
@@ -259,4 +279,53 @@
         display: block;
 
     }
+}
+
+.skill--icon--container {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;
+
+    @include desktop {
+        padding-top: 5rem;
+
+    }
+}
+
+.skill--image {
+    width: 10%;
+    height: 10%;
+    object-fit: contain;
+    object-position: center;
+    animation: fade-in 4s ease-out forwards;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.skill--image:hover {
+    transform: scale(120%);
+    cursor: pointer;
+}
+
+.down--arrow {
+    width: 5%;
+    margin: 0 auto;
+    margin-top: 7rem;
+    cursor: pointer;
+
+}
+
+.arrow--container {
+    display: flex;
+    justify-content: center;
 }

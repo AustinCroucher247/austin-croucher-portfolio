@@ -34,9 +34,11 @@
         letter-spacing: .15em;
         /* Adjust as needed */
         animation:
-            typing 4.5s steps(40, end),
-            blink-caret 1s step-end,
-            change-color 0.5s forwards 3.5s;
+            typing 7.5s steps(40) 0s,
+            blink-caret 1s step-end 0s,
+            change-color 0.5s forwards 3s,
+            hide-caret 0.1s forwards 3s;
+
     }
 
     /* The typing effect */

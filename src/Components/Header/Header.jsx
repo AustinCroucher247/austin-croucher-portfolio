@@ -1,7 +1,9 @@
 import './Header.scss'
 import { Link } from 'react-router-dom';
 function Header() {
-
+    const handleNavClick = () => {
+        document.body.classList.toggle('shifted');
+    };
 
     return (
         <>
@@ -9,7 +11,7 @@ function Header() {
                 <nav>
                     <div class="navbar">
                         <div class="container nav-container">
-                            <input class="checkbox" type="checkbox" name="" id="" />
+                            <input class="checkbox" type="checkbox" name="" id="" onClick={handleNavClick} />
                             <div class="hamburger-lines">
                                 <span class="line line1"></span>
                                 <span class="line line2"></span>
