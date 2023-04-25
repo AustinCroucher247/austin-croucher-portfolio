@@ -1,4 +1,4 @@
-import ProfileNoBack from '../../assets-portfolio/ProfilePicNoBack.png'
+import GameComponent from '../InteractiveGameComp/GameMount';
 
 
 function Interactive() {
@@ -8,8 +8,7 @@ function Interactive() {
         <>
             <div>
                 test
-                {/* <img className='profile-pic-non-interactive' src={ProfileNoBack} alt="Profile" /> */}
-
+                <GameComponent />
 
             </div>
         </>

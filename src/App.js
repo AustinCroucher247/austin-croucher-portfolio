@@ -3,7 +3,7 @@ import './global.scss'
 import NonInteractive from "./Components/NonInteractive/NonInteractive";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AboutMe from "./Components/AboutMe/AboutMe";
-import Interactive from "./Components/AboutMe/AboutMe";
+import Interactive from "./Components/Interactive/Interactive";
 
 
 function App() {
