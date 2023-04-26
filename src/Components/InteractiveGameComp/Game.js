@@ -16,8 +16,8 @@ import AboutMe from "../../assets-portfolio/Assets-Interactive/assets/AboutPaint
 import Projects from "../../assets-portfolio/Assets-Interactive/assets/Projects.png"
 import Lever from "../../assets-portfolio/Assets-Interactive/assets/LeverBrown.png"
 import FlipLever from "../../assets-portfolio/Assets-Interactive/assets/leverAnimation.png"
-
-
+import ProjectsBelow from "../../assets-portfolio/Assets-Interactive/assets/ProjectsBelow.png"
+import Chest2 from "../../assets-portfolio/Assets-Interactive/assets/Chest2.png"
 
 
 
@@ -346,7 +346,7 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 2
+    let level = 4
     let levels = {
         1: {
             init: () => {
@@ -615,6 +615,56 @@ game.mount = (canvas) => {
                     })
 
                 ]
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 285,
+                            y: 245
+                        },
+                        imageSrc: ProjectsBelow,
+                        scale: 0.3,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 285,
+                            y: 385
+                        },
+                        imageSrc: Chest2,
+                        scale: 0.3,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 385,
+                            y: 385
+                        },
+                        imageSrc: Chest2,
+                        scale: 0.3,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 485,
+                            y: 385
+                        },
+                        imageSrc: Chest2,
+                        scale: 0.3,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 585,
+                            y: 385
+                        },
+                        imageSrc: Chest2,
+                        scale: 0.3,
+                    })
+                )
             },
         },
 
@@ -745,33 +795,32 @@ game.mount = (canvas) => {
                             return;
                         }
                     }
-                    for (let i = 0; i < levers.length; i++) {
-                        if (isLeverAnimationPlaying) break; // Skip the loop if the lever animation is already playing
+                    // for (let i = 0; i < levers.length; i++) {
+                    //     if (isLeverAnimationPlaying) break; // Skip the loop if the lever animation is already playing
 
-                        const lever = levers[i];
-                        const hitbox = player.hitbox;
+                    //     const lever = levers[i];
+                    //     const hitbox = player.hitbox;
 
-                        const isWithinXRange = hitbox.position.x + hitbox.width >= lever.position.x &&
-                            hitbox.position.x <= lever.position.x + lever.width;
+                    //     const isWithinXRange = hitbox.position.x + hitbox.width >= lever.position.x &&
+                    //         hitbox.position.x <= lever.position.x + lever.width;
 
-                        const isAboveLeverTop = hitbox.position.y + hitbox.height <= lever.position.y;
-                        const isWithinHeightRange = hitbox.position.y + hitbox.height >= lever.position.y - 20;
+                    //     const isAboveLeverTop = hitbox.position.y + hitbox.height <= lever.position.y;
+                    //     const isWithinHeightRange = hitbox.position.y + hitbox.height >= lever.position.y - 20;
 
-                        if (isWithinXRange && isAboveLeverTop && isWithinHeightRange) {
-                            player.velocity.x = 0;
-                            player.velocity.y = 0;
-                            player.preventInput = true;
-                            player.switchSprite('flipLever');
-                            lever.play(); // Play the lever animation
-                            isLeverAnimationPlaying = true; // Set the flag to true
-                            lever.onComplete = () => {
-                                player.preventInput = false;
-                                isLeverAnimationPlaying = false; // Set the flag back to false when the animation completes
-                                window.open('https://www.linkedin.com/in/austin-croucher-623b61253/', '_blank'); // Open LinkedIn in a new tab
-                            }
-                            return;
-                        }
-                    }
+                    //     if (isWithinXRange && isAboveLeverTop && isWithinHeightRange) {
+                    //         player.velocity.x = 0;
+                    //         player.velocity.y = 0;
+                    //         player.preventInput = true;
+                    //         player.switchSprite('flipLever');
+                    //         lever.play(); // Play the lever animation
+                    //         isLeverAnimationPlaying = true; // Set the flag to true
+                    //         lever.onComplete = () => {
+                    //             player.preventInput = false;
+                    //             isLeverAnimationPlaying = false; // Set the flag back to false when the animation completes
+                    //         }
+                    //         return;
+                    //     }
+                    // }
                     if (player.velocity.y === 0) player.velocity.y = -15;
                 } catch (error) {
                     console.clear(); // Clear console log to disable error message
@@ -814,9 +863,9 @@ game.mount = (canvas) => {
         doors.forEach(door => {
             door.draw()
         })
-        levers.forEach(chest => {
-            chest.draw()
-        })
+        // levers.forEach(chest => {
+        //     chest.draw()
+        // })
         chests.forEach(chest => {
             chest.draw()
         })
