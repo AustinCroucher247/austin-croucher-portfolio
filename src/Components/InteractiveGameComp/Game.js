@@ -335,10 +335,13 @@ game.mount = (canvas) => {
             },
             flipLever: {
                 frameRate: 2,
-                frameBuffer: 5,
+                frameBuffer: 2,
                 loop: false,
                 imageSrc: FlipLever,
-                scale: 0.28,
+                scale: 0.0001,
+                onComplete: () => {
+                    player.preventInput = false;
+                }
             },
         },
     })
@@ -406,6 +409,7 @@ game.mount = (canvas) => {
                         },
                         imageSrc: Banner,
                         scale: 0.5,
+                        opacity: 0, // Set initial opacity to 0
                     })
                 )
                 signs.push(
@@ -424,6 +428,7 @@ game.mount = (canvas) => {
             init: () => {
                 chests = [];
                 signs = [];
+
                 parsedCollisions = collisionsLevel1.parse2D();
                 collisionBlocks = parsedCollisions.createObjectsFrom2D()
                 player.collisionBlocks = collisionBlocks
@@ -453,16 +458,30 @@ game.mount = (canvas) => {
                     })
 
                 ]
-                signs.push(
+                levers = [
                     new Sprite({
                         position: {
-                            x: 394,
-                            y: 300
+                            x: 567,
+                            y: 320
                         },
-                        imageSrc: Lever,
-                        scale: 0.15,
+                        imageSrc: FlipLever, // Replace FlipLever with your lever animation spritesheet
+                        frameRate: 2, // Set the frame rate for the lever animation
+                        frameBuffer: 2, // Set the frame buffer for the lever animation
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.1
                     })
-                )
+                ];
+                // signs.push(
+                //     new Sprite({
+                //         position: {
+                //             x: 394,
+                //             y: 300
+                //         },
+                //         imageSrc: Lever,
+                //         scale: 0.15,
+                //     })
+                // )
                 signs.push(
                     new Sprite({
                         position: {
@@ -473,6 +492,23 @@ game.mount = (canvas) => {
                         scale: 0.35,
                     })
                 )
+                const banner = new Sprite({
+                    position: {
+                        x: 140,
+                        y: 70
+                    },
+                    imageSrc: Banner,
+                    scale: 0.5,
+                    opacity: 0, // Set initial opacity to 0
+                });
+
+                signs.push(banner);
+
+                gsap.to(banner, {
+                    opacity: 1, // Target opacity value
+                    duration: 2, // Duration of the animation in seconds
+                    ease: 'power2.out', // Easing function for smooth animation
+                });
             },
         },
         3: {
@@ -610,6 +646,8 @@ game.mount = (canvas) => {
     let signs
     let levers
 
+
+
     Array.prototype.parse2D = function () {
         const rows = []
         for (let i = 0; i < this.length; i += 16) {
@@ -685,6 +723,8 @@ game.mount = (canvas) => {
     }
 
     window.addEventListener('keydown', (event) => {
+        let isLeverAnimationPlaying = false;
+
         if (player.preventInput) return;
         switch (event.key) {
             case 'w':
@@ -705,38 +745,33 @@ game.mount = (canvas) => {
                             return;
                         }
                     }
-                    for (let i = 0; i < chests.length; i++) {
-                        const chest = chests[i];
-                        if (
-                            player.hitbox.position.x + player.hitbox.width >= chest.position.x &&
-                            player.hitbox.position.x <= chest.position.x + chest.width &&
-                            player.hitbox.position.y + player.hitbox.height <= chest.position.y &&
-                            player.hitbox.position.y + player.hitbox.height >= chest.position.y - 10
-                        ) {
+                    for (let i = 0; i < levers.length; i++) {
+                        if (isLeverAnimationPlaying) break; // Skip the loop if the lever animation is already playing
+
+                        const lever = levers[i];
+                        const hitbox = player.hitbox;
+
+                        const isWithinXRange = hitbox.position.x + hitbox.width >= lever.position.x &&
+                            hitbox.position.x <= lever.position.x + lever.width;
+
+                        const isAboveLeverTop = hitbox.position.y + hitbox.height <= lever.position.y;
+                        const isWithinHeightRange = hitbox.position.y + hitbox.height >= lever.position.y - 20;
+
+                        if (isWithinXRange && isAboveLeverTop && isWithinHeightRange) {
                             player.velocity.x = 0;
                             player.velocity.y = 0;
                             player.preventInput = true;
-                            player.switchSprite('openChest');
-                            chest.play();
+                            player.switchSprite('flipLever');
+                            lever.play(); // Play the lever animation
+                            isLeverAnimationPlaying = true; // Set the flag to true
+                            lever.onComplete = () => {
+                                player.preventInput = false;
+                                isLeverAnimationPlaying = false; // Set the flag back to false when the animation completes
+                                window.open('https://www.linkedin.com/in/austin-croucher-623b61253/', '_blank'); // Open LinkedIn in a new tab
+                            }
                             return;
                         }
                     }
-                    // for (let i = 0; i < levers.length; i++) {
-                    //     const lever = levers[i];
-                    //     if (
-                    //         player.hitbox.position.x + player.hitbox.width >= lever.position.x &&
-                    //         player.hitbox.position.x <= lever.position.x + lever.width &&
-                    //         player.hitbox.position.y + player.hitbox.height <= lever.position.y &&
-                    //         player.hitbox.position.y + player.hitbox.height >= lever.position.y - 10
-                    //     ) {
-                    //         player.velocity.x = 0;
-                    //         player.velocity.y = 0;
-                    //         player.preventInput = true;
-                    //         player.switchSprite('flipLever');
-                    //         lever.play();
-                    //         return;
-                    //     }
-                    // }
                     if (player.velocity.y === 0) player.velocity.y = -15;
                 } catch (error) {
                     console.clear(); // Clear console log to disable error message
@@ -778,6 +813,9 @@ game.mount = (canvas) => {
 
         doors.forEach(door => {
             door.draw()
+        })
+        levers.forEach(chest => {
+            chest.draw()
         })
         chests.forEach(chest => {
             chest.draw()
