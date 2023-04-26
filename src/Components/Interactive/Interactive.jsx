@@ -1,13 +1,14 @@
 import GameComponent from '../InteractiveGameComp/GameMount';
+import { useEffect } from 'react';
 
 
 function Interactive() {
 
 
+
     return (
         <>
             <div>
-                test
                 <GameComponent />
 
             </div>

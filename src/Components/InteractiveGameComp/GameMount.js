@@ -1,5 +1,6 @@
 import game from "../../Components/InteractiveGameComp/Game";
 import { useEffect, useRef } from 'react';
+import './canvas.scss'
 
 const GameComponent = props => {
     const canvasRef = useRef();
@@ -13,9 +14,12 @@ const GameComponent = props => {
 
     return (
         <>
-            <script src="../src/Components/InteractiveGameComp/Sprite.js"></script>
-
-            <canvas ref={canvasRef} />
+            <div className="body">
+                <script src="../src/Components/InteractiveGameComp/Sprite.js"></script>
+                <div className="canvas--container">
+                    <canvas ref={canvasRef} />
+                </div>
+            </div>
         </>
     );
 };

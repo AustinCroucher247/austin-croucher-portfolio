@@ -1,4 +1,26 @@
 import { gsap } from "gsap";
+import Background1 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png"
+import Background2 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel2.png"
+import Background3 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel3.png"
+
+import idle from "../../assets-portfolio/Assets-Interactive/assets/king/idle.png"
+import idleLeft from "../../assets-portfolio/Assets-Interactive/assets/king/idleLeft.png"
+import runLeft from "../../assets-portfolio/Assets-Interactive/assets/king/runLeft.png"
+import runRight from "../../assets-portfolio/Assets-Interactive/assets/king/runRight.png"
+import enterDoor from "../../assets-portfolio/Assets-Interactive/assets/king/enterDoor.png"
+import doorOpen from "../../assets-portfolio/Assets-Interactive/assets/doorOpen.png"
+import goThroughDoorWithW from "../../assets-portfolio/Assets-Interactive/assets/SignPaintBlur.png"
+import HangingSign from "../../assets-portfolio/Assets-Interactive/assets/Controls2Edit.png"
+import Banner from "../../assets-portfolio/Assets-Interactive/assets/Banner.png"
+import AboutMe from "../../assets-portfolio/Assets-Interactive/assets/AboutPaint.png"
+import Projects from "../../assets-portfolio/Assets-Interactive/assets/Projects.png"
+import Lever from "../../assets-portfolio/Assets-Interactive/assets/LeverBrown.png"
+import FlipLever from "../../assets-portfolio/Assets-Interactive/assets/leverAnimation.png"
+
+
+
+
+
 let game = {
     over: false,
     active: true
@@ -9,35 +31,40 @@ game.mount = (canvas) => {
 
     canvas.width = 64 * 16 // 1024
     canvas.height = 64 * 9 // 576
+    // function resizeCanvas() {
+    //     canvas.width = window.innerWidth;
+    //     canvas.height = window.innerHeight;
+    // }
 
+    // resizeCanvas();
+    // window.addEventListener('resize', resizeCanvas);
 
     class Sprite {
         constructor({ position, imageSrc, frameRate = 1, animations, frameBuffer = 2, loop = true, autoplay = true, scale = 1, }) {
-            this.position = position
-            this.image = new Image()
+            this.position = position;
+            this.image = new Image();
             this.image.onload = () => {
-                console.log("Image loaded");
+                this.loaded = true;
+                this.width = this.image.width / this.frameRate;
+                this.height = this.image.height;
+            };
 
-                this.loaded = true
-                this.width = this.image.width / this.frameRate
-                this.height = this.image.height
-            }
-            this.image.src = imageSrc
-            this.loaded = false
-            this.frameRate = frameRate
-            this.currentFrame = 0
-            this.elapsedFrames = 0
-            this.frameBuffer = frameBuffer
-            this.animations = animations
-            this.loop = loop
-            this.autoplay = autoplay
-            this.scale = scale
+            this.image.src = imageSrc;
+            this.loaded = false;
+            this.frameRate = frameRate;
+            this.currentFrame = 0;
+            this.elapsedFrames = 0;
+            this.frameBuffer = frameBuffer;
+            this.animations = animations;
+            this.loop = loop;
+            this.autoplay = autoplay;
+            this.scale = scale;
 
             if (this.animations) {
                 for (let key in this.animations) {
-                    const image = new Image()
-                    image.src = this.animations[key].imageSrc
-                    this.animations[key].image = image
+                    const image = new Image();
+                    image.src = this.animations[key].imageSrc;
+                    this.animations[key].image = image;
                 }
             }
         };
@@ -228,49 +255,49 @@ game.mount = (canvas) => {
         }
     }
     const player = new Player({
-        imageSrc: './assets/king/idle.png',
+        imageSrc: idle,
         frameRate: 11,
         animations: {
             idleRight: {
                 frameRate: 11,
                 frameBuffer: 7,
                 loop: true,
-                imageSrc: './assets/king/idle.png',
+                imageSrc: idle,
 
             },
             idleLeft: {
                 frameRate: 11,
                 frameBuffer: 7,
                 loop: true,
-                imageSrc: './assets/king/idleLeft.png',
+                imageSrc: idleLeft,
 
             },
             runRight: {
                 frameRate: 8,
                 frameBuffer: 4,
                 loop: true,
-                imageSrc: './assets/king/runRight.png',
+                imageSrc: runRight,
 
             },
             runLeft: {
                 frameRate: 8,
                 frameBuffer: 4,
                 loop: true,
-                imageSrc: './assets/king/runLeft.png',
+                imageSrc: runLeft,
 
             },
             enterDoor: {
                 frameRate: 8,
                 frameBuffer: 4,
                 loop: false,
-                imageSrc: './assets/king/enterDoor.png',
+                imageSrc: enterDoor,
                 onComplete: () => {
                     gsap.to(overlay, {
                         opacity: 1,
                         onComplete: () => {
                             level++
 
-                            if (level === 4) level = 1
+                            if (level === 5) level = 1
                             levels[level].init()
                             player.switchSprite('idleRight')
                             player.preventInput = false
@@ -306,10 +333,17 @@ game.mount = (canvas) => {
                 }
 
             },
+            flipLever: {
+                frameRate: 2,
+                frameBuffer: 5,
+                loop: false,
+                imageSrc: FlipLever,
+                scale: 0.28,
+            },
         },
     })
 
-    let level = 1
+    let level = 2
     let levels = {
         1: {
             init: () => {
@@ -325,7 +359,7 @@ game.mount = (canvas) => {
                         x: 0,
                         y: 0
                     },
-                    imageSrc: '../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png',
+                    imageSrc: Background1,
                 })
                 console.log(background)
                 doors = [
@@ -335,7 +369,7 @@ game.mount = (canvas) => {
                             x: 767,
                             y: 270
                         },
-                        imageSrc: './assets/doorOpen.png',
+                        imageSrc: doorOpen,
                         frameRate: 5,
                         frameBuffer: 10,
                         loop: false,
@@ -344,61 +378,104 @@ game.mount = (canvas) => {
                     })
 
                 ]
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 210,
-                //             y: 240
-                //         },
-                //         imageSrc: './assets/WelcomeTo.png',
-                //         scale: 0.3,
-                //     })
-                // )
-
-                // Push the second sign to the signs array
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 335,
-                //             y: 220
-                //         },
-                //         imageSrc: './assets/AustinCrouchers.png',
-                //         scale: 0.4,
-                //     })
-                // )
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 510,
-                //             y: 240
-                //         },
-                //         imageSrc: './assets/Portfolio.png',
-                //         scale: 0.3,
-                //     })
-                // )
                 signs.push(
                     new Sprite({
                         position: {
                             x: 725,
                             y: 150
                         },
-                        imageSrc: './assets/GoThroughDoorWithW.png',
+                        imageSrc: goThroughDoorWithW,
                         scale: 0.35,
                     })
                 )
                 signs.push(
                     new Sprite({
                         position: {
-                            x: 200,
+                            x: 205,
                             y: 380
                         },
-                        imageSrc: './assets/Controls2.png',
+                        imageSrc: HangingSign,
                         scale: 0.35,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 140,
+                            y: 70
+                        },
+                        imageSrc: Banner,
+                        scale: 0.5,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 595,
+                            y: 290
+                        },
+                        imageSrc: AboutMe,
+                        scale: 0.18,
                     })
                 )
             },
         },
         2: {
+            init: () => {
+                chests = [];
+                signs = [];
+                parsedCollisions = collisionsLevel1.parse2D();
+                collisionBlocks = parsedCollisions.createObjectsFrom2D()
+                player.collisionBlocks = collisionBlocks
+                if (player.currentAnimation) player.currentAnimation.isActive = false
+
+                background = new Sprite({
+                    position: {
+                        x: 0,
+                        y: 0
+                    },
+                    imageSrc: Background1,
+                })
+                console.log(background)
+                doors = [
+
+                    new Sprite({
+                        position: {
+                            x: 767,
+                            y: 270
+                        },
+                        imageSrc: doorOpen,
+                        frameRate: 5,
+                        frameBuffer: 10,
+                        loop: false,
+                        autoplay: false
+
+                    })
+
+                ]
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 394,
+                            y: 300
+                        },
+                        imageSrc: Lever,
+                        scale: 0.15,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 354,
+                            y: 400
+                        },
+                        imageSrc: HangingSign,
+                        scale: 0.35,
+                    })
+                )
+            },
+        },
+        3: {
             init: () => {
                 chests = [];
                 signs = [];
@@ -416,7 +493,7 @@ game.mount = (canvas) => {
                         x: 0,
                         y: 0
                     },
-                    imageSrc: '../../assets-portfolio/Assets-Interactive/assets/backgroundLevel2.png'
+                    imageSrc: Background2
                 })
 
                 doors = [
@@ -426,7 +503,7 @@ game.mount = (canvas) => {
                             x: 772,
                             y: 336
                         },
-                        imageSrc: './assets/doorOpen.png',
+                        imageSrc: doorOpen,
                         frameRate: 5,
                         frameBuffer: 10,
                         loop: false,
@@ -453,9 +530,19 @@ game.mount = (canvas) => {
                     })
 
                 ]
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 695,
+                            y: 355
+                        },
+                        imageSrc: Projects,
+                        scale: 0.15,
+                    })
+                )
             },
         },
-        3: {
+        4: {
             init: () => {
                 chests = [];
                 signs = [];
@@ -473,7 +560,7 @@ game.mount = (canvas) => {
                         x: 0,
                         y: 0
                     },
-                    imageSrc: '../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png'
+                    imageSrc: Background3
                 })
 
                 doors = [
@@ -483,7 +570,7 @@ game.mount = (canvas) => {
                             x: 176,
                             y: 335
                         },
-                        imageSrc: './assets/doorOpen.png',
+                        imageSrc: doorOpen,
                         frameRate: 5,
                         frameBuffer: 10,
                         loop: false,
@@ -521,7 +608,7 @@ game.mount = (canvas) => {
     let doors
     let chests
     let signs
-
+    let levers
 
     Array.prototype.parse2D = function () {
         const rows = []
@@ -598,60 +685,73 @@ game.mount = (canvas) => {
     }
 
     window.addEventListener('keydown', (event) => {
-        if (player.preventInput) return
+        if (player.preventInput) return;
         switch (event.key) {
             case 'w':
-
-                for (let i = 0; i < doors.length; i++) {
-                    const door = doors[i]
-
-                    if (player.hitbox.position.x < door.position.x + door.width &&
-                        player.hitbox.position.x + player.hitbox.width > door.position.x &&
-                        player.hitbox.position.y < door.position.y + door.height &&
-                        player.hitbox.position.y + player.hitbox.height > door.position.y
-                    ) {
-                        player.velocity.x = 0
-                        player.velocity.y = 0
-                        player.preventInput = true
-                        player.switchSprite('enterDoor')
-                        door.play()
-                        return
+                try {
+                    for (let i = 0; i < doors.length; i++) {
+                        const door = doors[i];
+                        if (
+                            player.hitbox.position.x < door.position.x + door.width &&
+                            player.hitbox.position.x + player.hitbox.width > door.position.x &&
+                            player.hitbox.position.y < door.position.y + door.height &&
+                            player.hitbox.position.y + player.hitbox.height > door.position.y
+                        ) {
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.switchSprite('enterDoor');
+                            door.play();
+                            return;
+                        }
                     }
-
-                }
-                for (let i = 0; i < chests.length; i++) {
-                    const chest = chests[i];
-
-                    // Check if the player is in front of the chest
-                    if (
-                        player.hitbox.position.x + player.hitbox.width >= chest.position.x &&
-                        player.hitbox.position.x <= chest.position.x + chest.width &&
-                        player.hitbox.position.y + player.hitbox.height <= chest.position.y &&
-                        player.hitbox.position.y + player.hitbox.height >= chest.position.y - 10
-                    ) {
-                        player.velocity.x = 0;
-                        player.velocity.y = 0;
-                        player.preventInput = true;
-                        player.switchSprite('openChest');
-                        chest.play();
-                        return;
+                    for (let i = 0; i < chests.length; i++) {
+                        const chest = chests[i];
+                        if (
+                            player.hitbox.position.x + player.hitbox.width >= chest.position.x &&
+                            player.hitbox.position.x <= chest.position.x + chest.width &&
+                            player.hitbox.position.y + player.hitbox.height <= chest.position.y &&
+                            player.hitbox.position.y + player.hitbox.height >= chest.position.y - 10
+                        ) {
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.switchSprite('openChest');
+                            chest.play();
+                            return;
+                        }
                     }
+                    // for (let i = 0; i < levers.length; i++) {
+                    //     const lever = levers[i];
+                    //     if (
+                    //         player.hitbox.position.x + player.hitbox.width >= lever.position.x &&
+                    //         player.hitbox.position.x <= lever.position.x + lever.width &&
+                    //         player.hitbox.position.y + player.hitbox.height <= lever.position.y &&
+                    //         player.hitbox.position.y + player.hitbox.height >= lever.position.y - 10
+                    //     ) {
+                    //         player.velocity.x = 0;
+                    //         player.velocity.y = 0;
+                    //         player.preventInput = true;
+                    //         player.switchSprite('flipLever');
+                    //         lever.play();
+                    //         return;
+                    //     }
+                    // }
+                    if (player.velocity.y === 0) player.velocity.y = -15;
+                } catch (error) {
+                    console.clear(); // Clear console log to disable error message
                 }
-
-                if (player.velocity.y === 0)
-                    player.velocity.y = -15
-
-                break
+                break;
             case 'a':
-                keys.a.pressed = true
-                break
+                keys.a.pressed = true;
+                break;
             case 'd':
-                keys.d.pressed = true
-                break
+                keys.d.pressed = true;
+                break;
             default:
                 break;
         }
-    })
+    });
 
 
     window.addEventListener('keyup', (event) => {

@@ -1,0 +1,17 @@
+.canvas--container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+canvas {
+    width: 90%;
+    z-index: 2;
+}
+
+// .body {
+//     background-color: black;
+//     z-index: -1;
+//     width: 100%;
+//     margin: 0;
+// }
