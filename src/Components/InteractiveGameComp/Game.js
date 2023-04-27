@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 // import { ReactDOM } from "react";
-import Modal from "./modal";
 
 import Background1 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png"
 import Background2 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel2.png"
@@ -368,10 +367,10 @@ game.mount = (canvas) => {
                             lever.play();
 
                             // Display the modal after the lever is flipped and the animation is complete
-                            const modal = document.createElement('div');
-                            const modalContent = 'The lever has been flipped!';
-                            // ReactDOM.render(<Modal content={modalContent} />, modal);
-                            document.body.appendChild(modal);
+                            // const modal = document.createElement('div');
+                            // const modalContent = 'The lever has been flipped!';
+                            // // ReactDOM.render(<Modal content={modalContent} />, modal);
+                            // document.body.appendChild(modal);
 
                             return;
                         }
