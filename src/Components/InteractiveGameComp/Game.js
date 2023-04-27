@@ -23,6 +23,7 @@ import Chest2 from "../../assets-portfolio/Assets-Interactive/assets/Chest2.png"
 import LinkedInSign from "../../assets-portfolio/Assets-Interactive/assets/LinkedInSign.png"
 import GutHubSign from "../../assets-portfolio/Assets-Interactive/assets/GitHubSign.png"
 import SkillSet from "../../assets-portfolio/Assets-Interactive/assets/Skillset.png"
+import LeverW from "../../assets-portfolio/Assets-Interactive/assets/useW.png"
 
 
 let game = {
@@ -380,7 +381,7 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 1
+    let level = 2
     let levels = {
         1: {
             init: () => {
@@ -520,6 +521,16 @@ game.mount = (canvas) => {
                             y: 370
                         },
                         imageSrc: SkillSet,
+                        scale: 0.32,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 125,
+                            y: 380
+                        },
+                        imageSrc: LeverW,
                         scale: 0.32,
                     })
                 )
