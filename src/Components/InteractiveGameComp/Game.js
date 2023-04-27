@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+
 import Background1 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png"
 import Background2 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel2.png"
 import Background3 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel3.png"
@@ -9,12 +10,12 @@ import runLeft from "../../assets-portfolio/Assets-Interactive/assets/king/runLe
 import runRight from "../../assets-portfolio/Assets-Interactive/assets/king/runRight.png"
 import enterDoor from "../../assets-portfolio/Assets-Interactive/assets/king/enterDoor.png"
 import doorOpen from "../../assets-portfolio/Assets-Interactive/assets/doorOpen.png"
+
 import goThroughDoorWithW from "../../assets-portfolio/Assets-Interactive/assets/SignPaintBlur.png"
 import HangingSign from "../../assets-portfolio/Assets-Interactive/assets/Controls2Edit.png"
 import Banner from "../../assets-portfolio/Assets-Interactive/assets/Banner.png"
 import AboutMe from "../../assets-portfolio/Assets-Interactive/assets/AboutPaint.png"
 import Projects from "../../assets-portfolio/Assets-Interactive/assets/Projects.png"
-import Lever from "../../assets-portfolio/Assets-Interactive/assets/LeverBrown.png"
 import FlipLever from "../../assets-portfolio/Assets-Interactive/assets/leverAnimation.png"
 import ProjectsBelow from "../../assets-portfolio/Assets-Interactive/assets/ProjectsBelow.png"
 import Chest2 from "../../assets-portfolio/Assets-Interactive/assets/Chest2.png"
@@ -31,13 +32,6 @@ game.mount = (canvas) => {
 
     canvas.width = 64 * 16 // 1024
     canvas.height = 64 * 9 // 576
-    // function resizeCanvas() {
-    //     canvas.width = window.innerWidth;
-    //     canvas.height = window.innerHeight;
-    // }
-
-    // resizeCanvas();
-    // window.addEventListener('resize', resizeCanvas);
 
     class Sprite {
         constructor({ position, imageSrc, frameRate = 1, animations, frameBuffer = 2, loop = true, autoplay = true, scale = 1, }) {
@@ -118,7 +112,6 @@ game.mount = (canvas) => {
         }
     }
 
-
     class Player extends Sprite {
         constructor({ collisionBlocks = [], imageSrc, frameRate, animations, loop }) {
             super({ imageSrc, frameRate, animations, loop })
@@ -126,37 +119,24 @@ game.mount = (canvas) => {
                 x: 200,
                 y: 200
             }
-
             this.velocity = {
                 x: 0,
                 y: 0
             }
-
-
-
             this.sides = {
                 bottom: this.position.y + this.height
             }
             this.gravity = .7
             this.collisionBlocks = collisionBlocks
         }
-
         update() {
-            //this is the blue box
-            // c.fillStyle = 'rgba (0, 0, 255, 0.5)'
-            // c.fillRect(this.position.x, this.position.y, this.width, this.height)
             this.position.x += this.velocity.x
             this.updateHitBox()
-
             this.checkForHorizontalCollisions()
             this.applyGravity()
-
             this.updateHitBox()
-            // c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height)
             this.checkForVerticalCollisions()
-
         }
-
         handleInput(keys) {
             if (this.preventInput) return
             player.velocity.x = 0
@@ -255,6 +235,7 @@ game.mount = (canvas) => {
         }
     }
     const player = new Player({
+        leverActivated: false, // Add this property
         imageSrc: idle,
         frameRate: 11,
         animations: {
@@ -310,29 +291,7 @@ game.mount = (canvas) => {
                 }
 
             },
-            openChest: {
-                frameRate: 6,
-                frameBuffer: 10,
-                loop: false,
-                imageSrc: './assets/FrontFacingChestsSmall.png',
-                scale: 0.28,
-                onComplete: () => {
-                    gsap.to(overlay, {
-                        onComplete: () => {
 
-                            if (level === 4) level = 1
-                            levels[level].init()
-                            player.switchSprite('idleRight')
-                            player.preventInput = false
-                            gsap.to(overlay, {
-                                opacity: 0
-                            })
-                        }
-                    })
-
-                }
-
-            },
             flipLever: {
                 frameRate: 2,
                 frameBuffer: 2,
@@ -346,12 +305,13 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 4
+    let level = 2
     let levels = {
         1: {
             init: () => {
                 chests = [];
                 signs = [];
+                levers = []
                 parsedCollisions = collisionsLevel1.parse2D();
                 collisionBlocks = parsedCollisions.createObjectsFrom2D()
                 player.collisionBlocks = collisionBlocks
@@ -443,7 +403,6 @@ game.mount = (canvas) => {
                 })
                 console.log(background)
                 doors = [
-
                     new Sprite({
                         position: {
                             x: 767,
@@ -453,35 +412,23 @@ game.mount = (canvas) => {
                         frameRate: 5,
                         frameBuffer: 10,
                         loop: false,
-                        autoplay: false
-
-                    })
-
-                ]
-                levers = [
-                    new Sprite({
-                        position: {
-                            x: 567,
-                            y: 320
-                        },
-                        imageSrc: FlipLever, // Replace FlipLever with your lever animation spritesheet
-                        frameRate: 2, // Set the frame rate for the lever animation
-                        frameBuffer: 2, // Set the frame buffer for the lever animation
-                        loop: false,
                         autoplay: false,
-                        scale: 0.1
-                    })
+                        type: 'door' // Add this property
+                    }),
+                    // new Sprite({
+                    //     position: {
+                    //         x: 567,
+                    //         y: 320
+                    //     },
+                    //     imageSrc: FlipLever,
+                    //     frameRate: 2,
+                    //     frameBuffer: 2,
+                    //     loop: false,
+                    //     autoplay: false,
+                    //     scale: 0.1,
+                    //     type: 'lever' // Add this property
+                    // })
                 ];
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 394,
-                //             y: 300
-                //         },
-                //         imageSrc: Lever,
-                //         scale: 0.15,
-                //     })
-                // )
                 signs.push(
                     new Sprite({
                         position: {
@@ -499,7 +446,7 @@ game.mount = (canvas) => {
                     },
                     imageSrc: Banner,
                     scale: 0.5,
-                    opacity: 0, // Set initial opacity to 0
+                    opacity: 0,
                 });
 
                 signs.push(banner);
@@ -509,11 +456,26 @@ game.mount = (canvas) => {
                     duration: 2, // Duration of the animation in seconds
                     ease: 'power2.out', // Easing function for smooth animation
                 });
+                levers = [
+                    new Sprite({
+                        position: {
+                            x: 567,
+                            y: 320
+                        },
+                        imageSrc: FlipLever,
+                        frameRate: 2,
+                        frameBuffer: 2,
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.1
+                    })
+                ];
             },
         },
         3: {
             init: () => {
                 chests = [];
+                levers = []
                 signs = [];
 
                 parsedCollisions = collisionsLevel2.parse2D();
@@ -581,6 +543,7 @@ game.mount = (canvas) => {
         4: {
             init: () => {
                 chests = [];
+                levers = []
                 signs = [];
 
                 parsedCollisions = collisionsLevel3.parse2D();
@@ -694,10 +657,11 @@ game.mount = (canvas) => {
     let doors
     let chests
     let signs
+    // eslint-disable-next-line
     let levers
 
 
-
+    // eslint-disable-next-line
     Array.prototype.parse2D = function () {
         const rows = []
         for (let i = 0; i < this.length; i += 16) {
@@ -707,7 +671,7 @@ game.mount = (canvas) => {
         return rows
     }
 
-
+    // eslint-disable-next-line
     Array.prototype.createObjectsFrom2D = function () {
         const objects = []
         this.forEach((row, y) => {
@@ -773,8 +737,6 @@ game.mount = (canvas) => {
     }
 
     window.addEventListener('keydown', (event) => {
-        let isLeverAnimationPlaying = false;
-
         if (player.preventInput) return;
         switch (event.key) {
             case 'w':
@@ -795,32 +757,26 @@ game.mount = (canvas) => {
                             return;
                         }
                     }
-                    // for (let i = 0; i < levers.length; i++) {
-                    //     if (isLeverAnimationPlaying) break; // Skip the loop if the lever animation is already playing
 
-                    //     const lever = levers[i];
-                    //     const hitbox = player.hitbox;
+                    for (let i = 0; i < levers.length; i++) {
+                        const lever = levers[i];
+                        if (
+                            !player.leverActivated && // Add this condition
+                            player.hitbox.position.x < lever.position.x + lever.width &&
+                            player.hitbox.position.x + player.hitbox.width > lever.position.x &&
+                            player.hitbox.position.y < lever.position.y + lever.height &&
+                            player.hitbox.position.y + player.hitbox.height > lever.position.y
+                        ) {
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.leverActivated = true; // Set the leverActivated property to true
+                            player.switchSprite('flipLever');
+                            lever.play();
+                            return;
+                        }
+                    }
 
-                    //     const isWithinXRange = hitbox.position.x + hitbox.width >= lever.position.x &&
-                    //         hitbox.position.x <= lever.position.x + lever.width;
-
-                    //     const isAboveLeverTop = hitbox.position.y + hitbox.height <= lever.position.y;
-                    //     const isWithinHeightRange = hitbox.position.y + hitbox.height >= lever.position.y - 20;
-
-                    //     if (isWithinXRange && isAboveLeverTop && isWithinHeightRange) {
-                    //         player.velocity.x = 0;
-                    //         player.velocity.y = 0;
-                    //         player.preventInput = true;
-                    //         player.switchSprite('flipLever');
-                    //         lever.play(); // Play the lever animation
-                    //         isLeverAnimationPlaying = true; // Set the flag to true
-                    //         lever.onComplete = () => {
-                    //             player.preventInput = false;
-                    //             isLeverAnimationPlaying = false; // Set the flag back to false when the animation completes
-                    //         }
-                    //         return;
-                    //     }
-                    // }
                     if (player.velocity.y === 0) player.velocity.y = -15;
                 } catch (error) {
                     console.clear(); // Clear console log to disable error message
@@ -855,17 +811,12 @@ game.mount = (canvas) => {
     function animate() {
         window.requestAnimationFrame(animate);
         background.draw()
-
-        // collisionBlocks.forEach(collisionBlock => {
-        //     collisionBlock.draw()
-        // })
-
         doors.forEach(door => {
             door.draw()
         })
-        // levers.forEach(chest => {
-        //     chest.draw()
-        // })
+        levers.forEach(lever => {
+            lever.draw()
+        })
         chests.forEach(chest => {
             chest.draw()
         })
@@ -875,9 +826,6 @@ game.mount = (canvas) => {
         player.draw();
         player.handleInput(keys)
         player.update();
-
-
-
 
         c.save()
         c.globalAlpha = overlay.opacity
@@ -892,5 +840,10 @@ game.mount = (canvas) => {
     };
 
 }
+
+// Code to see collision blocks of map. needs to be moved into animate function
+// collisionBlocks.forEach(collisionBlock => {
+//     collisionBlock.draw()
+// })
 
 export default game;
