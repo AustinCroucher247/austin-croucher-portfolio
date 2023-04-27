@@ -1,4 +1,6 @@
 import { gsap } from "gsap";
+import { ReactDOM } from "react";
+import Modal from "./modal";
 
 import Background1 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel1.png"
 import Background2 from "../../assets-portfolio/Assets-Interactive/assets/backgroundLevel2.png"
@@ -17,9 +19,11 @@ import Banner from "../../assets-portfolio/Assets-Interactive/assets/Banner.png"
 import AboutMe from "../../assets-portfolio/Assets-Interactive/assets/AboutPaint.png"
 import Projects from "../../assets-portfolio/Assets-Interactive/assets/Projects.png"
 import FlipLever from "../../assets-portfolio/Assets-Interactive/assets/leverAnimation.png"
-import ProjectsBelow from "../../assets-portfolio/Assets-Interactive/assets/ProjectsBelow.png"
+import ProjectsBelow from "../../assets-portfolio/Assets-Interactive/assets/ProjectsBelowSun.png"
 import Chest2 from "../../assets-portfolio/Assets-Interactive/assets/Chest2.png"
-
+import LinkedInSign from "../../assets-portfolio/Assets-Interactive/assets/LinkedInSign.png"
+import GutHubSign from "../../assets-portfolio/Assets-Interactive/assets/GitHubSign.png"
+import SkillSet from "../../assets-portfolio/Assets-Interactive/assets/Skillset.png"
 
 
 let game = {
@@ -142,11 +146,11 @@ game.mount = (canvas) => {
             player.velocity.x = 0
             if (keys.d.pressed) {
                 this.switchSprite('runRight')
-                this.velocity.x = 5;
+                this.velocity.x = 3;
                 this.lastDirection = 'right'
             } else if (keys.a.pressed) {
                 this.switchSprite('runLeft')
-                this.velocity.x = -5;
+                this.velocity.x = -3;
                 this.lastDirection = 'left'
             }
             else {
@@ -300,6 +304,78 @@ game.mount = (canvas) => {
                 scale: 0.0001,
                 onComplete: () => {
                     player.preventInput = false;
+
+                    // Open LinkedIn profile in a new window or tab
+                    const linkedInProfileUrl = 'https://www.linkedin.com/in/austincroucher/';
+                    const newWindow = window.open(linkedInProfileUrl, '_blank');
+
+                    // Refresh the page after 5 seconds
+                    setTimeout(() => {
+                        if (!newWindow.closed) {
+                            newWindow.close(); // Close the LinkedIn profile window if it's still open
+                        }
+                        window.location.reload(); // Refresh the page
+                    }, 3000);
+                }
+            },
+            flipLeverGit: {
+                frameRate: 2,
+                frameBuffer: 2,
+                loop: false,
+                imageSrc: FlipLever,
+                scale: 0.0001,
+                onComplete: () => {
+                    player.preventInput = false;
+
+                    // Open LinkedIn profile in a new window or tab
+                    const linkedInProfileUrl = 'https://github.com/AustinCroucher247';
+                    const newWindow = window.open(linkedInProfileUrl, '_blank');
+
+                    // Refresh the page after 5 seconds
+                    setTimeout(() => {
+                        if (!newWindow.closed) {
+                            newWindow.close(); // Close the LinkedIn profile window if it's still open
+                        }
+                        window.location.reload(); // Refresh the page
+                    }, 3000);
+                }
+            },
+            skillSet: {
+                frameRate: 2,
+                frameBuffer: 2,
+                loop: false,
+                imageSrc: FlipLever,
+                scale: 0.0001,
+                onComplete: () => {
+                    player.preventInput = false;
+                    const levers2 = document.querySelectorAll('.lever2');
+
+                    for (let i = 0; i < levers2.length; i++) {
+                        const lever = levers2[i];
+                        if (
+                            !player.leverActivated && // Add this condition
+                            player.hitbox.position.x < lever.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > lever.position.x &&
+                            player.hitbox.position.y < lever.position.y + lever.height &&
+                            player.hitbox.position.y + player.hitbox.height > lever.position.y
+                        ) {
+                            lever.flipped = true;
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.leverActivated = true; // Set the leverActivated property to true
+                            player.switchSprite('skillSet');
+                            lever.play();
+
+                            // Display the modal after the lever is flipped and the animation is complete
+                            const modal = document.createElement('div');
+                            const modalContent = 'The lever has been flipped!';
+                            ReactDOM.render(<Modal content={modalContent} />, modal);
+                            document.body.appendChild(modal);
+
+                            return;
+                        }
+                    }
                 }
             },
         },
@@ -312,6 +388,9 @@ game.mount = (canvas) => {
                 chests = [];
                 signs = [];
                 levers = []
+                levers1 = []
+                levers2 = []
+
                 parsedCollisions = collisionsLevel1.parse2D();
                 collisionBlocks = parsedCollisions.createObjectsFrom2D()
                 player.collisionBlocks = collisionBlocks
@@ -401,7 +480,6 @@ game.mount = (canvas) => {
                     },
                     imageSrc: Background1,
                 })
-                console.log(background)
                 doors = [
                     new Sprite({
                         position: {
@@ -415,28 +493,35 @@ game.mount = (canvas) => {
                         autoplay: false,
                         type: 'door' // Add this property
                     }),
-                    // new Sprite({
-                    //     position: {
-                    //         x: 567,
-                    //         y: 320
-                    //     },
-                    //     imageSrc: FlipLever,
-                    //     frameRate: 2,
-                    //     frameBuffer: 2,
-                    //     loop: false,
-                    //     autoplay: false,
-                    //     scale: 0.1,
-                    //     type: 'lever' // Add this property
-                    // })
                 ];
                 signs.push(
                     new Sprite({
                         position: {
-                            x: 354,
-                            y: 400
+                            x: 250,
+                            y: 370
                         },
-                        imageSrc: HangingSign,
-                        scale: 0.35,
+                        imageSrc: LinkedInSign,
+                        scale: 0.32,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 410,
+                            y: 370
+                        },
+                        imageSrc: GutHubSign,
+                        scale: 0.32,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 570,
+                            y: 370
+                        },
+                        imageSrc: SkillSet,
+                        scale: 0.32,
                     })
                 )
                 const banner = new Sprite({
@@ -459,23 +544,57 @@ game.mount = (canvas) => {
                 levers = [
                     new Sprite({
                         position: {
-                            x: 567,
+                            x: 310,
                             y: 320
                         },
                         imageSrc: FlipLever,
+                        flipped: false,
                         frameRate: 2,
                         frameBuffer: 2,
                         loop: false,
                         autoplay: false,
                         scale: 0.1
-                    })
+                    }),
                 ];
+                levers1 = [
+                    new Sprite({
+                        position: {
+                            x: 470,
+                            y: 320
+                        },
+                        imageSrc: FlipLever,
+                        flipped: false,
+                        frameRate: 2,
+                        frameBuffer: 2,
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.1
+                    }),
+                ];
+                levers2 = [
+                    new Sprite({
+                        position: {
+                            x: 632,
+                            y: 320
+                        },
+                        imageSrc: FlipLever,
+                        flipped: false,
+                        frameRate: 2,
+                        frameBuffer: 2,
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.1
+                    }),
+                ];
+
             },
         },
         3: {
             init: () => {
                 chests = [];
                 levers = []
+                levers1 = []
+                levers2 = []
                 signs = [];
 
                 parsedCollisions = collisionsLevel2.parse2D();
@@ -544,6 +663,8 @@ game.mount = (canvas) => {
             init: () => {
                 chests = [];
                 levers = []
+                levers1 = []
+                levers2 = []
                 signs = [];
 
                 parsedCollisions = collisionsLevel3.parse2D();
@@ -659,6 +780,8 @@ game.mount = (canvas) => {
     let signs
     // eslint-disable-next-line
     let levers
+    let levers1
+    let levers2
 
 
     // eslint-disable-next-line
@@ -762,16 +885,55 @@ game.mount = (canvas) => {
                         const lever = levers[i];
                         if (
                             !player.leverActivated && // Add this condition
-                            player.hitbox.position.x < lever.position.x + lever.width &&
+                            player.hitbox.position.x < lever.position.x + 20 &&
                             player.hitbox.position.x + player.hitbox.width > lever.position.x &&
                             player.hitbox.position.y < lever.position.y + lever.height &&
                             player.hitbox.position.y + player.hitbox.height > lever.position.y
                         ) {
+                            // lever.flipped = true;
                             player.velocity.x = 0;
                             player.velocity.y = 0;
                             player.preventInput = true;
                             player.leverActivated = true; // Set the leverActivated property to true
                             player.switchSprite('flipLever');
+                            lever.play();
+                            return;
+                        }
+                    }
+                    for (let i = 0; i < levers1.length; i++) {
+                        const lever = levers1[i];
+                        if (
+                            !player.leverActivated && // Add this condition
+                            player.hitbox.position.x < lever.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > lever.position.x &&
+                            player.hitbox.position.y < lever.position.y + lever.height &&
+                            player.hitbox.position.y + player.hitbox.height > lever.position.y
+                        ) {
+                            // lever.flipped = true;
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.leverActivated = true; // Set the leverActivated property to true
+                            player.switchSprite('flipLeverGit');
+                            lever.play();
+                            return;
+                        }
+                    }
+                    for (let i = 0; i < levers2.length; i++) {
+                        const lever = levers2[i];
+                        if (
+                            !player.leverActivated && // Add this condition
+                            player.hitbox.position.x < lever.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > lever.position.x &&
+                            player.hitbox.position.y < lever.position.y + lever.height &&
+                            player.hitbox.position.y + player.hitbox.height > lever.position.y
+                        ) {
+                            lever.flipped = true;
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.leverActivated = true; // Set the leverActivated property to true
+                            player.switchSprite('flipLeverGit');
                             lever.play();
                             return;
                         }
@@ -814,7 +976,15 @@ game.mount = (canvas) => {
         doors.forEach(door => {
             door.draw()
         })
+
         levers.forEach(lever => {
+            lever.draw()
+        })
+
+        levers1.forEach(lever => {
+            lever.draw()
+        })
+        levers2.forEach(lever => {
             lever.draw()
         })
         chests.forEach(chest => {

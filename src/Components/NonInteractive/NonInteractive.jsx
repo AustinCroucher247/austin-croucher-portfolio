@@ -52,8 +52,9 @@ function NonInteractive() {
         }, 3000);
     };
     return (
-        <>
+        <>  <div className='header--container'>
             <Header />
+        </div>
             <h1 className='about-me-text'>console.log(About_Me)</h1>
             <div className='text--profile--container'>
                 <div class="wrapper">

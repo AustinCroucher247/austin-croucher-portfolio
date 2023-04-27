@@ -1,13 +1,17 @@
 import GameComponent from '../InteractiveGameComp/GameMount';
-import { useEffect } from 'react';
+import './Interactive.scss'
 
 function Interactive() {
-    useEffect(() => {
-        window.scrollBy(0, 5 * window.innerHeight / 100);
-    }, []);
+    const reloadPage = () => {
+        window.scrollTo(0, window.scrollY + 5 * window.innerHeight / 100);
+        window.location.reload();
+    };
+
+
 
     return (
         <div>
+            <button className='button--reload' onClick={reloadPage}>Start Game</button>
             <GameComponent />
         </div>
     );

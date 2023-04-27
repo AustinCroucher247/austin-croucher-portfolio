@@ -13,11 +13,12 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/nonInteractive" element={<NonInteractive />} />
         <Route path="/AboutMe" element={<AboutMe />} />
-        <Route path="/Interactive" element={<Interactive />} />
-
+        <Route
+          path="/Interactive"
+          element={<Interactive key={Date.now()} />}
+        />
       </Routes>
     </BrowserRouter>
-
   );
 }
 

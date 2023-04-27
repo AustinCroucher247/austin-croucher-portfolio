@@ -40,7 +40,7 @@ function LandingPage() {
                         </button>
                     </Link>
 
-                    <Link to={'./AboutMe'}>
+                    {/* <Link to={'./AboutMe'}>
                         <button className="button" style={{ '--color': '#EAC055' }}>
                             <span></span>
                             <span></span>
@@ -48,7 +48,7 @@ function LandingPage() {
                             <span></span>
                             About Me
                         </button>
-                    </Link>
+                    </Link> */}
                     <Link to={'./Interactive'}>
                         <button className="button" style={{ '--color': '#EAC055' }}>
                             <span></span>
