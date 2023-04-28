@@ -47,9 +47,9 @@ function NonInteractive() {
     const handleCardClick = (e, url) => {
         e.preventDefault();
         setShowModal(true);
-        setTimeout(() => {
-            window.location.href = url;
-        }, 3000);
+        // setTimeout(() => {
+        //     window.location.href = url;
+        // }, 1000);
     };
     return (
         <>  <div className='header--container'>
@@ -128,7 +128,7 @@ function NonInteractive() {
                         <ul class="cards">
                             <div className='card1-nonInteractive'>
                                 <li>
-                                    <a href="https://calm-dasik-5c6551.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://calm-dasik-5c6551.netlify.app/')}>
+                                    <a href="https://retrorumble.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://retrorumble.netlify.app/')}>
                                         <img className='card--img--retrorumble' src={RetroRumble} alt="" />
                                         <div class="card__overlay">
                                             <div class="card__header">

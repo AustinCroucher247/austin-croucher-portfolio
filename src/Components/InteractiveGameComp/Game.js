@@ -421,7 +421,7 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 1
+    let level = 4
     let levels = {
         1: {
             init: () => {
@@ -779,26 +779,26 @@ game.mount = (canvas) => {
                         scale: 0.3,
                     })
                 )
-                signs.push(
-                    new Sprite({
-                        position: {
-                            x: 485,
-                            y: 385
-                        },
-                        imageSrc: Chest2,
-                        scale: 0.3,
-                    })
-                )
-                signs.push(
-                    new Sprite({
-                        position: {
-                            x: 585,
-                            y: 385
-                        },
-                        imageSrc: Chest2,
-                        scale: 0.3,
-                    })
-                )
+                // signs.push(
+                //     new Sprite({
+                //         position: {
+                //             x: 485,
+                //             y: 385
+                //         },
+                //         imageSrc: Chest2,
+                //         scale: 0.3,
+                //     })
+                // )
+                // signs.push(
+                //     new Sprite({
+                //         position: {
+                //             x: 585,
+                //             y: 385
+                //         },
+                //         imageSrc: Chest2,
+                //         scale: 0.3,
+                //     })
+                // )
             },
         },
 
