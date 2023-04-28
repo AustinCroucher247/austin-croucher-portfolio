@@ -351,10 +351,8 @@ game.mount = (canvas) => {
                     player.preventInput = false;
 
                     // Open LinkedIn profile in a new window or tab
-                    setTimeout(() => {
-                        const linkedInProfileUrl = 'https://www.linkedin.com/in/austincroucher/';
-                        window.open(linkedInProfileUrl, '_blank', 'noopener,noreferrer');
-                    }, 1500);
+                    const linkedInProfileUrl = 'https://www.linkedin.com/in/austincroucher/';
+                    const newWindow = window.open(linkedInProfileUrl, '_blank', 'noopener,noreferrer');
 
                     setTimeout(() => {
                         if (!newWindow.closed) {
@@ -364,7 +362,6 @@ game.mount = (canvas) => {
 
                     window.location.reload(); // Refresh the page
                 }
-
             },
             flipLeverGit: {
                 frameRate: 2,
