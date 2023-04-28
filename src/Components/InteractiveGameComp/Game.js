@@ -329,15 +329,16 @@ game.mount = (canvas) => {
 
                     // Open LinkedIn profile in a new window or tab
                     const linkedInProfileUrl = 'https://github.com/AustinCroucher247';
-                    const newWindow = window.open(linkedInProfileUrl, '_blank');
+                    const newWindow = window.open(linkedInProfileUrl, '_blank', 'noopener,noreferrer');
 
                     // Refresh the page after 5 seconds
                     setTimeout(() => {
                         if (!newWindow.closed) {
                             newWindow.close(); // Close the LinkedIn profile window if it's still open
                         }
-                        window.location.reload(); // Refresh the page
                     }, 3000);
+
+                    window.location.reload(); // Refresh the page
                 }
             },
             skillSet: {
