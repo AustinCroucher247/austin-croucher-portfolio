@@ -368,17 +368,48 @@ game.mount = (canvas) => {
                             player.switchSprite('skillSet');
                             lever.play();
 
-                            // Display the modal after the lever is flipped and the animation is complete
-                            // const modal = document.createElement('div');
-                            // const modalContent = 'The lever has been flipped!';
-                            // // ReactDOM.render(<Modal content={modalContent} />, modal);
-                            // document.body.appendChild(modal);
+                            // Create the modal after the lever is flipped and the animation is complete
+                            const modal = document.createElement('div');
+                            modal.style.display = 'block';
+                            modal.style.position = 'fixed';
+                            modal.style.zIndex = '1';
+                            modal.style.left = '0';
+                            modal.style.top = '0';
+                            modal.style.width = '100%';
+                            modal.style.height = '100%';
+                            modal.style.overflow = 'auto';
+                            modal.style.backgroundColor = 'rgba(0,0,0,0.4)';
+
+                            const modalContent = document.createElement('div');
+                            modalContent.style.backgroundColor = '#fefefe';
+                            modalContent.style.margin = '15% auto';
+                            modalContent.style.padding = '20px';
+                            modalContent.style.border = '1px solid #888';
+                            modalContent.style.width = '80%';
+
+                            const modalText = document.createElement('p');
+                            modalText.innerHTML = 'The lever has been flipped!';
+                            modalContent.appendChild(modalText);
+
+                            const closeModalButton = document.createElement('button');
+                            closeModalButton.innerHTML = 'Close';
+                            closeModalButton.style.display = 'block';
+                            closeModalButton.style.margin = '0 auto';
+                            closeModalButton.style.padding = '10px';
+                            closeModalButton.style.cursor = 'pointer';
+                            closeModalButton.onclick = () => {
+                                modal.style.display = 'none';
+                            };
+                            modalContent.appendChild(closeModalButton);
+
+                            modal.appendChild(modalContent);
+                            document.body.appendChild(modal);
 
                             return;
                         }
                     }
                 }
-            },
+            }
         },
     })
 
