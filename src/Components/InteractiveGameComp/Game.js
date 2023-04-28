@@ -461,6 +461,7 @@ game.mount = (canvas) => {
         1: {
             init: () => {
                 chests = [];
+                chests1 = [];
                 signs = [];
                 levers = []
                 levers1 = []
@@ -542,6 +543,8 @@ game.mount = (canvas) => {
             init: () => {
                 chests = [];
                 signs = [];
+                chests1 = [];
+
 
                 parsedCollisions = collisionsLevel1.parse2D();
                 collisionBlocks = parsedCollisions.createObjectsFrom2D()
@@ -680,6 +683,8 @@ game.mount = (canvas) => {
                 levers = []
                 levers1 = []
                 levers2 = []
+                chests1 = [];
+
                 signs = [];
 
                 parsedCollisions = collisionsLevel2.parse2D();
