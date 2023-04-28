@@ -24,6 +24,14 @@ import LinkedInSign from "../../assets-portfolio/Assets-Interactive/assets/Linke
 import GutHubSign from "../../assets-portfolio/Assets-Interactive/assets/GitHubSign.png"
 import SkillSet from "../../assets-portfolio/Assets-Interactive/assets/Skillset.png"
 import LeverW from "../../assets-portfolio/Assets-Interactive/assets/useW.png"
+import HTML from '../../assets-portfolio/html-5.png'
+import CSS from '../../assets-portfolio/css-3.png'
+import JavaScript from '../../assets-portfolio/js.png'
+import Node from '../../assets-portfolio/nodejs.png'
+import ReactImg from '../../assets-portfolio/react.png'
+import SASS from '../../assets-portfolio/sass.png'
+import MySQL from '../../assets-portfolio/mysql.png'
+import Git from '../../assets-portfolio/git.png'
 
 
 let game = {
@@ -901,6 +909,69 @@ game.mount = (canvas) => {
         }
     }
 
+
+    function displaySkillSetModal() {
+        const modal = document.createElement('div');
+        modal.style.display = 'block';
+        modal.style.position = 'fixed';
+        modal.style.zIndex = '1000';
+        modal.style.left = '0';
+        modal.style.top = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.borderRadius = '10px';
+        modal.style.overflow = 'auto';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.4)';
+
+        const modalContent = document.createElement('div');
+        modalContent.style.background = 'linear-gradient(to right, #090d31, #1B435E)';
+        modalContent.style.margin = '15% auto';
+        modalContent.style.padding = '20px';
+        modalContent.style.border = '1px solid #888';
+        modalContent.style.width = '80%';
+        modalContent.style.borderRadius = '10px'
+        const skillIconContainer = document.createElement('div');
+        skillIconContainer.className = 'skill--icon--container';
+        modalContent.appendChild(skillIconContainer);
+
+        const skills = [
+            { src: HTML, alt: 'HTML' },
+            { src: CSS, alt: 'CSS' },
+            { src: JavaScript, alt: 'Javascript' },
+            { src: ReactImg, alt: 'React' },
+            { src: Node, alt: 'Node' },
+            { src: SASS, alt: 'SASS' },
+            { src: Git, alt: 'Git' },
+            { src: MySQL, alt: 'MySQL' },
+        ];
+
+        // Create image elements for each skill
+        skills.forEach((skill) => {
+            const skillImage = document.createElement('img');
+            skillImage.src = skill.src;
+            skillImage.className = 'skill--image';
+            skillImage.alt = skill.alt;
+            skillImage.style.marginRight = '3rem'; // Add 3rem space between images
+            skillIconContainer.appendChild(skillImage);
+        });
+
+        // Add close button
+        const closeModalButton = document.createElement('button');
+        closeModalButton.innerHTML = 'Close';
+        closeModalButton.style.display = 'block';
+        closeModalButton.style.margin = '2rem auto'; // Add 3rem space above the close button
+        closeModalButton.style.padding = '10px';
+        closeModalButton.style.cursor = 'pointer';
+        closeModalButton.onclick = () => {
+            modal.style.display = 'none';
+            window.location.reload(); // Reload the page
+        };
+        modalContent.appendChild(closeModalButton);
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+    }
+
     window.addEventListener('keydown', (event) => {
         if (player.preventInput) return;
         switch (event.key) {
@@ -964,7 +1035,7 @@ game.mount = (canvas) => {
                     for (let i = 0; i < levers2.length; i++) {
                         const lever = levers2[i];
                         if (
-                            !player.leverActivated && // Add this condition
+                            !player.leverActivated &&
                             player.hitbox.position.x < lever.position.x + 20 &&
                             player.hitbox.position.x + player.hitbox.width > lever.position.x &&
                             player.hitbox.position.y < lever.position.y + lever.height &&
@@ -974,12 +1045,19 @@ game.mount = (canvas) => {
                             player.velocity.x = 0;
                             player.velocity.y = 0;
                             player.preventInput = true;
-                            player.leverActivated = true; // Set the leverActivated property to true
-                            player.switchSprite('flipLeverGit');
+                            player.leverActivated = true;
+                            player.switchSprite('skillSet');
                             lever.play();
+
+                            // Call the function to display the modal after the lever is flipped and the animation is complete
+                            setTimeout(() => {
+                                displaySkillSetModal();
+                            }, 1000); // Adjust the delay as needed
+
                             return;
                         }
                     }
+                    ;
 
                     if (player.velocity.y === 0) player.velocity.y = -15;
                 } catch (error) {
