@@ -12,7 +12,7 @@ function Interactive() {
     };
 
     const reloadPage = () => {
-        window.scrollTo(0, window.scrollY + 5 * window.innerHeight / 100);
+        window.scrollTo(0, window.scrollY + 15 * window.innerHeight / 100);
         window.location.reload();
     };
 

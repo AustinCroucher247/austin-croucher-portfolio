@@ -456,7 +456,7 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 4
+    let level = 1
     let levels = {
         1: {
             init: () => {
