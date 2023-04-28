@@ -350,14 +350,21 @@ game.mount = (canvas) => {
                 onComplete: () => {
                     player.preventInput = false;
 
-                    // Add a delay before redirecting to the LinkedIn profile
+                    // Open LinkedIn profile in a new window or tab
                     setTimeout(() => {
                         const linkedInProfileUrl = 'https://www.linkedin.com/in/austincroucher/';
                         window.open(linkedInProfileUrl, '_blank', 'noopener,noreferrer');
-                    }, 1500); // 1.5 seconds delay
+                    }, 1500);
+
+                    setTimeout(() => {
+                        if (!newWindow.closed) {
+                            newWindow.close(); // Close the LinkedIn profile window if it's still open
+                        }
+                    }, 3000);
 
                     window.location.reload(); // Refresh the page
                 }
+
             },
             flipLeverGit: {
                 frameRate: 2,
