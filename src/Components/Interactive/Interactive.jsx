@@ -12,12 +12,15 @@ function Interactive() {
     };
 
     const reloadPage = () => {
-        window.scrollTo(0, window.scrollY + 15 * window.innerHeight / 100);
         window.location.reload();
+
+        window.scrollTo(0, window.scrollY + 15 * window.innerHeight / 100);
     };
 
     return (
+
         <div className='button--contai'>
+            <h1 className='desktop-text'>Only available on desktop!</h1>
             {showButton && <img src={PlayButton} className='play--button' alt="" onClick={handleClick} />}
             <GameComponent />
         </div>
