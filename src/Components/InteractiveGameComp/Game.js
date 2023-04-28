@@ -19,7 +19,6 @@ import AboutMe from "../../assets-portfolio/Assets-Interactive/assets/AboutPaint
 import Projects from "../../assets-portfolio/Assets-Interactive/assets/Projects.png"
 import FlipLever from "../../assets-portfolio/Assets-Interactive/assets/leverAnimation.png"
 import ProjectsBelow from "../../assets-portfolio/Assets-Interactive/assets/ProjectsBelowSun.png"
-import Chest2 from "../../assets-portfolio/Assets-Interactive/assets/Chest2.png"
 import LinkedInSign from "../../assets-portfolio/Assets-Interactive/assets/LinkedInSign.png"
 import GutHubSign from "../../assets-portfolio/Assets-Interactive/assets/GitHubSign.png"
 import SkillSet from "../../assets-portfolio/Assets-Interactive/assets/Skillset.png"
