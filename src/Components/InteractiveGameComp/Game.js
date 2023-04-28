@@ -32,6 +32,8 @@ import SASS from '../../assets-portfolio/sass.png'
 import MySQL from '../../assets-portfolio/mysql.png'
 import Git from '../../assets-portfolio/git.png'
 import ChestAnimationFinal from '../../assets-portfolio/Assets-Interactive/assets/ChestAnimationFinal.png'
+import RetroFrame from '../../assets-portfolio/Assets-Interactive/assets/Retroframe.png'
+import PlanetFrame from '../../assets-portfolio/Assets-Interactive/assets/PlanetFrame.png'
 
 
 let game = {
@@ -456,7 +458,7 @@ game.mount = (canvas) => {
         },
     })
 
-    let level = 1
+    let level = 4
     let levels = {
         1: {
             init: () => {
@@ -778,6 +780,26 @@ game.mount = (canvas) => {
                         },
                         imageSrc: ProjectsBelow,
                         scale: 0.3,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 340,
+                            y: 320
+                        },
+                        imageSrc: RetroFrame,
+                        scale: 0.4,
+                    })
+                )
+                signs.push(
+                    new Sprite({
+                        position: {
+                            x: 442,
+                            y: 320
+                        },
+                        imageSrc: PlanetFrame,
+                        scale: 0.4,
                     })
                 )
                 chests = [
