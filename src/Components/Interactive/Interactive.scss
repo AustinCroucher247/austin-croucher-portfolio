@@ -2,3 +2,16 @@
     margin-left: 0 auto;
     background-color: red;
 }
+
+.play--button {
+    cursor: pointer;
+    margin: 0 auto;
+    padding-left: 32%;
+    padding-top: 10%;
+}
+
+.play--button:hover {
+    cursor: pointer;
+    transform: scale(110%);
+
+}

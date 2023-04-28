@@ -48,7 +48,7 @@ function NonInteractive() {
         e.preventDefault();
         setShowModal(true);
         // setTimeout(() => {
-        //     window.location.href = url;
+        window.location.href = url;
         // }, 1000);
     };
     return (
@@ -63,7 +63,10 @@ function NonInteractive() {
                         src={ProfilePic}
                         class="image--cover"
                         onClick={handleProfilePicClick}
-                    />                </div>
+                    />
+                    <h1 className='clickProfile'>Click Profile Pic!</h1>
+                </div>
+
                 <Element name="section2">
 
                     <div className='section2'>
@@ -137,6 +140,8 @@ function NonInteractive() {
                                                 <div class="card__header-text">
                                                     <h3 class="card__title">Retro Rumble</h3>
                                                     <span class="card__status">April 12, 2023</span>
+                                                </div>
+                                                <div>
                                                 </div>
                                             </div>
                                             <p class="card__description">Retro Rumble, features classic arcade games like Space Invaders and Tetris. The Website includes leaderboard functionality so you can compete against other gamers from around the world to see who's the best.</p>

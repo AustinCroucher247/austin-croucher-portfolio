@@ -32,6 +32,7 @@ import ReactImg from '../../assets-portfolio/react.png'
 import SASS from '../../assets-portfolio/sass.png'
 import MySQL from '../../assets-portfolio/mysql.png'
 import Git from '../../assets-portfolio/git.png'
+import ChestAnimationFinal from '../../assets-portfolio/Assets-Interactive/assets/ChestAnimationFinal.png'
 
 
 let game = {
@@ -303,7 +304,42 @@ game.mount = (canvas) => {
                 }
 
             },
+            openChest: {
+                frameRate: 6,
+                frameBuffer: 6,
+                loop: false,
+                imageSrc: ChestAnimationFinal,
+                onComplete: () => {
+                    player.preventInput = false;
+                    const retroRumbleUrl = 'https://retrorumble.netlify.app/';
+                    const newWindow = window.open(retroRumbleUrl, '_blank', 'noopener,noreferrer');
+                    setTimeout(() => {
+                        if (!newWindow.closed) {
+                            newWindow.close(); // Close the LinkedIn profile window if it's still open
+                        }
+                    }, 3000);
 
+                    window.location.reload(); // Refresh the page
+                }
+            },
+            openChest1: {
+                frameRate: 6,
+                frameBuffer: 6,
+                loop: false,
+                imageSrc: ChestAnimationFinal,
+                onComplete: () => {
+                    player.preventInput = false;
+                    const retroRumbleUrl = 'https://planetjumper.netlify.app/';
+                    const newWindow = window.open(retroRumbleUrl, '_blank', 'noopener,noreferrer');
+                    setTimeout(() => {
+                        if (!newWindow.closed) {
+                            newWindow.close(); // Close the LinkedIn profile window if it's still open
+                        }
+                    }, 3000);
+
+                    window.location.reload(); // Refresh the page
+                }
+            },
             flipLever: {
                 frameRate: 2,
                 frameBuffer: 2,
@@ -679,24 +715,6 @@ game.mount = (canvas) => {
                     })
 
                 ]
-
-                chests = [
-                    new Sprite({
-                        position: {
-                            x: 150,
-                            y: 454
-                        },
-                        imageSrc: './assets/FrontFacingChestsSmall.png',
-                        frameRate: 6,
-                        frameBuffer: 50,
-                        loop: false,
-                        autoplay: false,
-                        scale: 0.28,
-                        opacity: 0.
-
-                    })
-
-                ]
                 signs.push(
                     new Sprite({
                         position: {
@@ -711,7 +729,6 @@ game.mount = (canvas) => {
         },
         4: {
             init: () => {
-                chests = [];
                 levers = []
                 levers1 = []
                 levers2 = []
@@ -759,46 +776,41 @@ game.mount = (canvas) => {
                         scale: 0.3,
                     })
                 )
-                signs.push(
+                chests = [
                     new Sprite({
                         position: {
-                            x: 285,
+                            x: 355,
                             y: 385
                         },
-                        imageSrc: Chest2,
-                        scale: 0.3,
+                        imageSrc: ChestAnimationFinal,
+                        frameRate: 6,
+                        frameBuffer: 6,
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.30,
+                        opacity: 0.
+
                     })
-                )
-                signs.push(
+
+                ]
+                chests1 = [
                     new Sprite({
                         position: {
-                            x: 385,
+                            x: 455,
                             y: 385
                         },
-                        imageSrc: Chest2,
-                        scale: 0.3,
+                        imageSrc: ChestAnimationFinal,
+                        frameRate: 6,
+                        frameBuffer: 6,
+                        loop: false,
+                        autoplay: false,
+                        scale: 0.30,
+                        opacity: 0.
+
                     })
-                )
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 485,
-                //             y: 385
-                //         },
-                //         imageSrc: Chest2,
-                //         scale: 0.3,
-                //     })
-                // )
-                // signs.push(
-                //     new Sprite({
-                //         position: {
-                //             x: 585,
-                //             y: 385
-                //         },
-                //         imageSrc: Chest2,
-                //         scale: 0.3,
-                //     })
-                // )
+
+                ]
+
             },
         },
 
@@ -827,6 +839,7 @@ game.mount = (canvas) => {
     let background
     let doors
     let chests
+    let chests1
     let signs
     // eslint-disable-next-line
     let levers
@@ -993,7 +1006,61 @@ game.mount = (canvas) => {
                             return;
                         }
                     }
-
+                    for (let i = 0; i < chests.length; i++) {
+                        const chest = chests[i];
+                        if (
+                            !player.chestActivated && // Add this condition
+                            player.hitbox.position.x < chest.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > chest.position.x &&
+                            player.hitbox.position.y < chest.position.y + chest.height &&
+                            player.hitbox.position.y + player.hitbox.height > chest.position.y
+                        ) {
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.chestActivated = true; // Set the chestActivated property to true
+                            player.switchSprite('openChest');
+                            chest.play(); // Play the chest animation
+                            return;
+                        }
+                    }
+                    for (let i = 0; i < chests1.length; i++) {
+                        const chest = chests1[i];
+                        if (
+                            !player.chestActivated && // Add this condition
+                            player.hitbox.position.x < chest.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > chest.position.x &&
+                            player.hitbox.position.y < chest.position.y + chest.height &&
+                            player.hitbox.position.y + player.hitbox.height > chest.position.y
+                        ) {
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.chestActivated = true; // Set the chestActivated property to true
+                            player.switchSprite('openChest1');
+                            chest.play(); // Play the chest animation
+                            return;
+                        }
+                    }
+                    for (let i = 0; i < levers.length; i++) {
+                        const lever = levers[i];
+                        if (
+                            !player.leverActivated && // Add this condition
+                            player.hitbox.position.x < lever.position.x + 20 &&
+                            player.hitbox.position.x + player.hitbox.width > lever.position.x &&
+                            player.hitbox.position.y < lever.position.y + lever.height &&
+                            player.hitbox.position.y + player.hitbox.height > lever.position.y
+                        ) {
+                            // lever.flipped = true;
+                            player.velocity.x = 0;
+                            player.velocity.y = 0;
+                            player.preventInput = true;
+                            player.leverActivated = true; // Set the leverActivated property to true
+                            player.switchSprite('flipLever');
+                            lever.play();
+                            return;
+                        }
+                    }
                     for (let i = 0; i < levers.length; i++) {
                         const lever = levers[i];
                         if (
@@ -1108,6 +1175,9 @@ game.mount = (canvas) => {
             lever.draw()
         })
         chests.forEach(chest => {
+            chest.draw()
+        })
+        chests1.forEach(chest => {
             chest.draw()
         })
         signs.forEach(sign => {
