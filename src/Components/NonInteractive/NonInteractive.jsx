@@ -64,7 +64,7 @@ function NonInteractive() {
                         class="image--cover"
                         onClick={handleProfilePicClick}
                     />
-                    <h1 className='clickProfile'>Click Profile Pic!</h1>
+                    <h1 className='clickProfile'>Click Profile Picture!</h1>
                 </div>
 
                 <Element name="section2">
