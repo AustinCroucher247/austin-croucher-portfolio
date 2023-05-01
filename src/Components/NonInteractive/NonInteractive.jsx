@@ -19,14 +19,51 @@ import Git from '../../assets-portfolio/git.png'
 import ProfilePic from '../../assets-portfolio/ProfilePic.jpg'
 import { scroller } from 'react-scroll';
 import DownArrow from '../../assets-portfolio/downarrow.png'
-
-
-
+import LinkedIn from '../../assets-portfolio/LinkedIn.png'
+import gmail from '../../assets-portfolio/Gmail.png'
+import github from '../../assets-portfolio/gitHub.png'
 
 
 
 function NonInteractive() {
     const [ref, inView] = useInView({ threshold: 0.5 });
+
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     // Get form data
+    //     const name = document.getElementById("name").value;
+    //     const email = document.getElementById("email").value;
+    //     const message = document.getElementById("message").value;
+
+    //     // Prepare data to send
+    //     const data = {
+    //         name,
+    //         email,
+    //         message
+    //     };
+
+    //     // Make an HTTP request to your server-side script (e.g., PHP)
+    //     fetch("send-email.php", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then((response) => response.json())
+    //         .then((response) => {
+    //             if (response.success) {
+    //                 alert("Message sent successfully!");
+    //             } else {
+    //                 alert("Error: " + response.error);
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error:", error);
+    //         });
+    // };
 
     const handleProfilePicClick = () => {
         scroller.scrollTo("section2", {
@@ -37,6 +74,15 @@ function NonInteractive() {
     };
     const handleArrowClick = () => {
         scroller.scrollTo("projects", {
+            duration: 800,
+            delay: 0,
+            smooth: "easeInOutQuart",
+        });
+    };
+
+
+    const handleArrowClickContact = () => {
+        scroller.scrollTo("contact", {
             duration: 800,
             delay: 0,
             smooth: "easeInOutQuart",
@@ -165,53 +211,47 @@ function NonInteractive() {
                                     </div>
                                 </a>
                             </li>
-                            {/* <li>
-                        <a href="" class="card">
-                            <img src="https://i.imgur.com/oYiTqum.jpg" class="card__image" alt="" />
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                    <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">Jessica Parker</h3>
-                                        <span class="card__tagline">Lorem ipsum dolor sit amet consectetur</span>
-                                        <span class="card__status">1 hour ago</span>
-                                    </div>
-                                </div>
-                                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="https://i.imgur.com/2DhmtJ4.jpg" class="card__image" alt="" />
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                    <img class="card__thumb" src="https://i.imgur.com/sjLMNDM.png" alt="" />
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">kim Cattrall</h3>
-                                        <span class="card__status">3 hours ago</span>
-                                    </div>
-                                </div>
-                                <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
-                            </div>
-                        </a>
-                    </li> */}
                         </ul>
                     </div>
                 </div>
             </Element>
-
-            {/* <div class="center">
-                <div class="article-card">
-                    <div class="content">
-                        <p class="date">April 12, 2023</p>
-                        <p class="title">Retro Rumble!</p>
-                    </div>
-                    <img className='planetJumper' src={PlanetJumper} alt="Retro Rumble" />
+            <div className='arrow--container'>
+                <img src={DownArrow} className='down--arrow' alt="" onClick={handleArrowClickContact} />
+            </div>
+            <Element name='contact'>
+                <div className='contact--container'>
+                    <h1 className='contact--text'>Contact Me</h1>
                 </div>
-            </div> */}
+
+                <div>
+                    <a href="https://www.linkedin.com/in/austincroucher/">
+                        <img className='linkedin--contact' src={LinkedIn} alt="" />
+                    </a>
+                    <a href="mailto:austin.croucher@gmail.com">
+                        <img className='gmail--contact' src={gmail} alt="" />
+                    </a>
+                    <a href="https://github.com/AustinCroucher247">
+                        <img className='linkedin--contact' src={github} alt="" />
+                    </a>
+                </div>
+
+
+                {/* <div className='form--container'>
+                    <form id="contact-form" onSubmit={handleSubmit}>
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" id="name" name="name" required />
+
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+
+                        <label htmlFor="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div> */}
+            </Element>
+
         </>
     );
 }

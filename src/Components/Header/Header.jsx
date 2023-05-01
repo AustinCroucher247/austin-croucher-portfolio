@@ -20,7 +20,6 @@ function Header() {
                             <div class="logo">
                                 <h1>Austin Croucher</h1>
                                 <h1>Full-Stack Developer</h1>
-
                             </div>
                             <div class="menu-items">
 
