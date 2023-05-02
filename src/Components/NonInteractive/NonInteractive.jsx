@@ -219,22 +219,23 @@ function NonInteractive() {
                 <img src={DownArrow} className='down--arrow' alt="" onClick={handleArrowClickContact} />
             </div>
             <Element name='contact'>
-                <div className='contact--container'>
-                    <h1 className='contact--text'>Contact Me</h1>
-                </div>
+                <div className='container--whole'>
+                    <div className='contact--container'>
+                        <h1 className='contact--text'>Contact Me</h1>
+                    </div>
 
-                <div>
-                    <a href="https://www.linkedin.com/in/austincroucher/">
-                        <img className='linkedin--contact' src={LinkedIn} alt="" />
-                    </a>
-                    <a href="mailto:austin.croucher@gmail.com">
-                        <img className='gmail--contact' src={gmail} alt="" />
-                    </a>
-                    <a href="https://github.com/AustinCroucher247">
-                        <img className='linkedin--contact' src={github} alt="" />
-                    </a>
+                    <div>
+                        <a href="https://www.linkedin.com/in/austincroucher/">
+                            <img className='linkedin--contact' src={LinkedIn} alt="" />
+                        </a>
+                        <a href="mailto:austin.croucher@gmail.com">
+                            <img className='gmail--contact' src={gmail} alt="" />
+                        </a>
+                        <a href="https://github.com/AustinCroucher247">
+                            <img className='linkedin--contact' src={github} alt="" />
+                        </a>
+                    </div>
                 </div>
-
 
                 {/* <div className='form--container'>
                     <form id="contact-form" onSubmit={handleSubmit}>
