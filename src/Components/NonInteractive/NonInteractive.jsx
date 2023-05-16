@@ -22,6 +22,8 @@ import DownArrow from '../../assets-portfolio/downarrow.png'
 import LinkedIn from '../../assets-portfolio/LinkedIn.png'
 import gmail from '../../assets-portfolio/Gmail.png'
 import github from '../../assets-portfolio/gitHub.png'
+import DPSC from '../../assets-portfolio/WoodshopThumbnail.png'
+import DPSCLogo from '../../assets-portfolio/logo.png'
 
 
 
@@ -208,6 +210,22 @@ function NonInteractive() {
                                             </div>
                                         </div>
                                         <p class="card__description">An interactive space education tool where users can flip between different planets and use spacebar to make the astronaut jump relative to the currently selected planets gravity</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://croucherwoodshop.netlify.app/  " class="card" onClick={(e) => handleCardClick(e, 'https://planetjumper.netlify.app/')}>
+                                    <img className='card--img--planetJumper' src={DPSC} class="card__image" alt="" />
+                                    <div class="card__overlay">
+                                        <div class="card__header">
+                                            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                                            <img class="card__thumb" src={DPSCLogo} alt="" />
+                                            <div class="card__header-text">
+                                                <h3 class="card__title">Croucher Woodshop</h3>
+                                                <span class="card__status">May 15th, 2023</span>
+                                            </div>
+                                        </div>
+                                        <p class="card__description">A portfolio website built in React utilizing Strapi CMS for backend content management.</p>
                                     </div>
                                 </a>
                             </li>
