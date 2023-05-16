@@ -214,7 +214,7 @@ function NonInteractive() {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://croucherwoodshop.netlify.app/  " class="card" onClick={(e) => handleCardClick(e, 'https://planetjumper.netlify.app/')}>
+                                <a href="https://croucherwoodshop.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://croucherwoodshop.netlify.app/')}>
                                     <img className='card--img--planetJumper' src={DPSC} class="card__image" alt="" />
                                     <div class="card__overlay">
                                         <div class="card__header">
