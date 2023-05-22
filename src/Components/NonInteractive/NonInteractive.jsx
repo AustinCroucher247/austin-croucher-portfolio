@@ -188,6 +188,9 @@ function NonInteractive() {
                                                 <div class="card__header-text">
                                                     <h3 class="card__title">Retro Rumble</h3>
                                                     <span class="card__status">April 12, 2023</span>
+                                                    <br></br>
+                                                    <span class="card__status">React, socket.io, HTML5 Canvas/Javascript, Node, Express, REST API, MySQL</span>
+
                                                 </div>
                                                 <div>
                                                 </div>
@@ -207,6 +210,8 @@ function NonInteractive() {
                                             <div class="card__header-text">
                                                 <h3 class="card__title">Planet Jumper</h3>
                                                 <span class="card__status">March 20th, 2023</span>
+                                                <br></br>
+                                                <span class="card__status">React, REST API, Node, Express, Javascript</span>
                                             </div>
                                         </div>
                                         <p class="card__description">An interactive space education tool where users can flip between different planets and use spacebar to make the astronaut jump relative to the currently selected planets gravity</p>
@@ -223,12 +228,15 @@ function NonInteractive() {
                                             <div class="card__header-text">
                                                 <h3 class="card__title">Croucher Woodshop</h3>
                                                 <span class="card__status">May 15th, 2023</span>
+                                                <br></br>
+                                                <span class="card__status">React, CMS -- Strapi, Node, Express, Javascript</span>
                                             </div>
                                         </div>
                                         <p class="card__description">A portfolio website built in React utilizing Strapi CMS for backend content management.</p>
                                     </div>
                                 </a>
                             </li>
+
                         </ul>
                     </div>
                 </div>
