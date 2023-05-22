@@ -232,7 +232,7 @@ function NonInteractive() {
                                                 <span class="card__status">React, CMS -- Strapi, Node, Express, Javascript</span>
                                             </div>
                                         </div>
-                                        <p class="card__description">A portfolio website built in React utilizing Strapi CMS for backend content management.</p>
+                                        <p class="card__description">A portfolio website built in React utilizing Strapi CMS for backend content management. Client of project can upload and delete pictures themsevles.</p>
                                     </div>
                                 </a>
                             </li>
