@@ -392,9 +392,27 @@ button {
 }
 
 .linkedin--contact {
-    width: 2%;
+    width: 8%;
+    margin-left: 20rem;
+
 }
 
 .gmail--contact {
-    width: 4%;
+    width: 16%;
+}
+
+.container--whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+}
+
+.git--contact {
+    width: 10%;
 }

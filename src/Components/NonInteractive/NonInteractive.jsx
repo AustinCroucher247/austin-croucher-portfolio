@@ -21,7 +21,7 @@ import { scroller } from 'react-scroll';
 import DownArrow from '../../assets-portfolio/downarrow.png'
 import LinkedIn from '../../assets-portfolio/LinkedIn.png'
 import gmail from '../../assets-portfolio/Gmail.png'
-import github from '../../assets-portfolio/gitHub.png'
+import github from '../../assets-portfolio/gitHub-removebg-preview.png'
 import DPSC from '../../assets-portfolio/WoodshopThumbnail.png'
 import DPSCLogo from '../../assets-portfolio/logo.png'
 
@@ -250,16 +250,18 @@ function NonInteractive() {
                         <h1 className='contact--text'>Contact Me</h1>
                     </div>
 
-                    <div>
-                        <a href="https://www.linkedin.com/in/austincroucher/">
-                            <img className='linkedin--contact' src={LinkedIn} alt="" />
-                        </a>
-                        <a href="mailto:austin.croucher@gmail.com">
-                            <img className='gmail--contact' src={gmail} alt="" />
-                        </a>
-                        <a href="https://github.com/AustinCroucher247">
-                            <img className='linkedin--contact' src={github} alt="" />
-                        </a>
+                    <div className='icons'>
+                        <div className='icons--row'>
+                            <a className='icons--individual' href="https://www.linkedin.com/in/austincroucher/">
+                                <img className='linkedin--contact' src={LinkedIn} alt="" />
+                            </a>
+                            <a className='icons--individual' href="mailto:austin.croucher@gmail.com">
+                                <img className='gmail--contact' src={gmail} alt="" />
+                            </a>
+                            <a className='icons--individual' href="https://github.com/AustinCroucher247">
+                                <img className='git--contact' src={github} alt="" />
+                            </a>
+                        </div>
                     </div>
                 </div>
 

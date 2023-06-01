@@ -5,11 +5,12 @@
 
 
 
+
 .landing-page {
     opacity: 0;
     animation: fade-in 1s ease-out forwards;
 
-    @keyframes fade-in {    
+    @keyframes fade-in {
         from {
             opacity: 0;
         }
@@ -153,19 +154,10 @@
     transition: 0.5s;
     z-index: 1;
     margin-top: 4rem;
-    margin-right: 3rem;
     background-color: transparent;
     opacity: 0;
     animation: fade-in 5s ease-out forwards;
     cursor: pointer;
-    margin-left: 3rem;
-
-    @include tablet {
-        margin-left: 0;
-    }
-
-
-
 
     @keyframes fade-in {
         from {
@@ -398,5 +390,17 @@ a {
 
     @include desktop {
         padding: 0;
+    }
+}
+
+.container--whole--landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rem;
+
+    @media screen and (max-width: 600px) {
+        display: none; // Hide the element for screen widths smaller than or equal to 600px
     }
 }
