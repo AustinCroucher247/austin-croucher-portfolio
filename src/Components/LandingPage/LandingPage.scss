@@ -399,8 +399,13 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 25rem;
+    position: fixed;
 
     @media screen and (max-width: 600px) {
         display: none; // Hide the element for screen widths smaller than or equal to 600px
     }
+}
+
+.coding--picture {
+    width: 50%;
 }

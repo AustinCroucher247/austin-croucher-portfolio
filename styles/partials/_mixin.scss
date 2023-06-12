@@ -25,3 +25,9 @@
     @content;
   }
 }
+
+@mixin test-break {
+  @media screen and (min-width: $test-breakpoint) {
+    @content
+  }
+}

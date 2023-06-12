@@ -120,18 +120,30 @@ function NonInteractive() {
                     <div className='section2'>
                         <div className='about--me--text--container'>
                             <p className='about--me--text'>
-                                My name is Austin Croucher and I am a graduate of both the Philosophy and History programs
-                                at York University with a certificate in conflict resolution and dispute management. After
-                                graduating I started moving up in the restaurant industry until I reached the position of General Manager.
-                                After a few years in this position I realized I wanted to challenge myself more intellectually and given
-                                my pre-existing interest in the tech industry, it seemed a shift into software engineering would be a good
-                                fit. I made the decision to leave and pursued an
-                                education in software engineering through BrainStation.
-                                I believe that my educational background as well as my professional background will work together for a
-                                seamless transition into the tech industry. My interpersonal skills learned throughout my time in the
-                                restaurant industry will make working as part of a team effortless and on top of this my logical and
-                                analytical thought processes formed throughout my philosophy degree will transition well into programming
-                                given the innate logical nature of coding.
+                                I'm Austin Croucher, a unique fusion of Philosophy and History graduate from York University,
+                                seasoned restaurant industry professional turned aspiring software engineer. Passionate about life's complexities,
+                                I've mastered the art of conflict resolution and dispute management, honed the skills of general management in the
+                                culinary world, and navigated the intellectual rigors of software engineering at BrainStation.
+
+                                My journey is unique, but it's the testament to my adaptability and thirst for knowledge. Transitioning
+                                from the restaurant industry to software engineering may seem unusual, but it was a challenge I faced head-on.
+                                This highlights my aptitude to learn quickly and adapt, as demonstrated by my successful completion of the intensive
+                                bootcamp at BrainStation where I was able to aquire a diverse set of skills including HTML, CSS, JavaScript, React, Angular, Vue, Node,
+                                Express, PHP, SASS, Git, MySQL, and Agile methodology, with a proficient command of JIRA..
+                                <br />                                <br />
+                                <br />
+                                <br />
+
+                                I believe my diverse background will be a valuable asset to any tech team. Throughout my time managing restaurants,
+                                I've fostered a knack for team collaboration, empathy, and dynamic problem-solving - skills that I believe are as crucial
+                                in software development as they are in the restaurant industry.
+
+                                Furthermore, my philosophical training instilled in me a logical and analytical mindset, aligning naturally with
+                                the procedural logic required in programming. I am confident that my unique combination of experience, skills, and intellectual curiosity equips me to make significant contributions to the tech world.
+
+                                In essence, I am more than my resume. I am a story of curiosity, intellectual growth, adaptability, and a strong
+                                determination. I'm excited to bring these qualities to your team, to learn from you, and to solve the complexities
+                                of the tech industry together.
                             </p>
                         </div>
                     </div>
