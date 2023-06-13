@@ -133,17 +133,18 @@ function NonInteractive() {
                                 <br />                                <br />
                                 <br />
                                 <br />
+                                <p>
+                                    I believe my diverse background will be a valuable asset to any tech team. Throughout my time managing restaurants,
+                                    I've fostered a knack for team collaboration, empathy, and dynamic problem-solving - skills that I believe are as crucial
+                                    in software development as they are in the restaurant industry.
 
-                                I believe my diverse background will be a valuable asset to any tech team. Throughout my time managing restaurants,
-                                I've fostered a knack for team collaboration, empathy, and dynamic problem-solving - skills that I believe are as crucial
-                                in software development as they are in the restaurant industry.
+                                    Furthermore, my philosophical training instilled in me a logical and analytical mindset, aligning naturally with
+                                    the procedural logic required in programming. I am confident that my unique combination of experience, skills, and intellectual curiosity equips me to make significant contributions to the tech world.
 
-                                Furthermore, my philosophical training instilled in me a logical and analytical mindset, aligning naturally with
-                                the procedural logic required in programming. I am confident that my unique combination of experience, skills, and intellectual curiosity equips me to make significant contributions to the tech world.
+                                    In essence, I am more than my resume. I am a story of curiosity, intellectual growth, adaptability, and a strong
+                                    determination. I'm excited to bring these qualities to your team, to learn from you, and to solve the complexities
+                                    of the tech industry together. </p>
 
-                                In essence, I am more than my resume. I am a story of curiosity, intellectual growth, adaptability, and a strong
-                                determination. I'm excited to bring these qualities to your team, to learn from you, and to solve the complexities
-                                of the tech industry together.
                             </p>
                         </div>
                     </div>
