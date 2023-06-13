@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import LinkedIn from '../../assets-portfolio/LinkedIn.png'
 import gmail from '../../assets-portfolio/Gmail.png'
 import github from '../../assets-portfolio/gitHub-removebg-preview.png'
-import coding1 from '../../assets-portfolio/coding1.png'
+// import coding1 from '../../assets-portfolio/coding1.png'
 
 
 function LandingPage() {
