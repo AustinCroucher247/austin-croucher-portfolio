@@ -161,8 +161,7 @@ function NonInteractive() {
                                 bootcamp at BrainStation where I was able to aquire a diverse set of skills including HTML, CSS, JavaScript, React, Angular, Vue, Node,
                                 Express, PHP, SASS, Git, MySQL, and Agile methodology, with a proficient command of JIRA..
                                 <br />                                <br />
-                                <br />
-                                <br />
+
                                 <p>
                                     I believe my diverse background will be a valuable asset to any tech team. Throughout my time managing restaurants,
                                     I've fostered a knack for team collaboration, empathy, and dynamic problem-solving - skills that I believe are as crucial
