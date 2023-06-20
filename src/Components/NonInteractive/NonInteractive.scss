@@ -393,7 +393,7 @@ button {
 
 .linkedin--contact {
     width: 8%;
-    margin-left: 20rem;
+    margin-left: 32rem;
 
 }
 
@@ -415,4 +415,33 @@ button {
 
 .git--contact {
     width: 10%;
+}
+
+.skill--icon--container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.skill--image {
+    width: 100px;
+    margin-top: 2rem;
+    height: auto;
+}
+
+.middle--button {
+    margin-left: 1.5rem;
+}
+
+.buttons--under--card {
+    display: flex;
+    justify-content: center;
+}
+
+.skills--arrow {
+    width: 15%;
+    margin-top: 0;
 }

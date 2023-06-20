@@ -15,6 +15,11 @@ import Node from '../../assets-portfolio/nodejs.png'
 import ReactImg from '../../assets-portfolio/react.png'
 import SASS from '../../assets-portfolio/sass.png'
 import MySQL from '../../assets-portfolio/mysql.png'
+import strapi from '../../assets-portfolio/strapi.png'
+import cms from '../../assets-portfolio/headless-cms-bnr-img.png'
+import sanity from '../../assets-portfolio/sanity.svg'
+import php from '../../assets-portfolio/PHP.png'
+import tailwind from '../../assets-portfolio/tailwind-white1.png'
 import Git from '../../assets-portfolio/git.png'
 import ProfilePic from '../../assets-portfolio/ProfilePic.jpg'
 import { scroller } from 'react-scroll';
@@ -24,12 +29,28 @@ import gmail from '../../assets-portfolio/Gmail.png'
 import github from '../../assets-portfolio/gitHub-removebg-preview.png'
 import DPSC from '../../assets-portfolio/WoodshopThumbnail.png'
 import DPSCLogo from '../../assets-portfolio/logo.png'
+import retrovideodemo from '../../assets-portfolio/RetroRumbleVid.mp4'
+import woodshopdemo from '../../assets-portfolio/woodshopVideo.mp4'
+import planetdemo from '../../assets-portfolio/planetVideo.mp4'
+import Modal from 'react-modal';
+import ReactPlayer from 'react-player';
+
 
 
 
 function NonInteractive() {
     const [ref, inView] = useInView({ threshold: 0.5 });
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [videoURL, setVideoURL] = useState('');  // set state for video URL
 
+    const openModal = (url) => {  // pass URL as parameter
+        setIsOpen(true);
+        setVideoURL(url);  // set video URL state
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+    }
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
@@ -76,6 +97,15 @@ function NonInteractive() {
     };
     const handleArrowClick = () => {
         scroller.scrollTo("projects", {
+            duration: 800,
+            delay: 0,
+            smooth: "easeInOutQuart",
+        });
+    };
+
+
+    const handleArrowClickSkills = () => {
+        scroller.scrollTo("skills", {
             duration: 800,
             delay: 0,
             smooth: "easeInOutQuart",
@@ -148,8 +178,15 @@ function NonInteractive() {
                             </p>
                         </div>
                     </div>
-                    <br />
-                    <div>
+                </Element>
+                <div className='arrow--container'>
+                    <img src={DownArrow} className='down--arrow skills--arrow' alt="" onClick={handleArrowClickSkills} />
+                </div>
+                <br />
+
+                <div>
+                    <Element name="skills">
+
                         <h1 className='about-me-text'>
                             Skillsets
                         </h1>
@@ -162,13 +199,19 @@ function NonInteractive() {
                             <img src={SASS} className='skill--image' alt='SASS' />
                             <img src={Git} className='skill--image' alt='Git' />
                             <img src={MySQL} className='skill--image' alt='MySQL' />
+                            <img src={cms} className='skill--image' alt='MySQL' />
+                            <img src={strapi} className='skill--image' alt='MySQL' />
+                            <img src={sanity} className='skill--image' alt='MySQL' />
+                            <img src={tailwind} className='skill--image' alt='MySQL' />
+                            <img src={php} className='skill--image' alt='MySQL' />
 
                         </div>
-                        <div className='arrow--container'>
-                            <img src={DownArrow} className='down--arrow' alt="" onClick={handleArrowClick} />
-                        </div>
+                    </Element>
+
+                    <div className='arrow--container'>
+                        <img src={DownArrow} className='down--arrow skills--arrow ' alt="" onClick={handleArrowClick} />
                     </div>
-                </Element>
+                </div>
 
                 <br />
                 <br />
@@ -190,29 +233,31 @@ function NonInteractive() {
 
                     <div className='card--container--non--interactive'>
                         <ul class="cards">
-                            <div className='card1-nonInteractive'>
-                                <li>
-                                    <a href="https://retrorumble.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://retrorumble.netlify.app/')}>
-                                        <img className='card--img--retrorumble' src={RetroRumble} alt="" />
-                                        <div class="card__overlay">
-                                            <div class="card__header">
-                                                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                                <img class="card__thumb" src={ArcadeMachine} alt="" />
-                                                <div class="card__header-text">
-                                                    <h3 class="card__title">Retro Rumble</h3>
-                                                    <span class="card__status">April 12, 2023</span>
-                                                    <br></br>
-                                                    <span class="card__status">React, socket.io, HTML5 Canvas/Javascript, Node, Express, REST API, MySQL</span>
+                            <li>
+                                <a href="https://retrorumble.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://retrorumble.netlify.app/')}>
+                                    <img className='card--img--retrorumble' src={RetroRumble} alt="" />
+                                    <div class="card__overlay">
+                                        <div class="card__header">
+                                            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                                            <img class="card__thumb" src={ArcadeMachine} alt="" />
+                                            <div class="card__header-text">
+                                                <h3 class="card__title">Retro Rumble</h3>
+                                                <span class="card__status">April 12, 2023</span>
+                                                <br></br>
+                                                <span class="card__status">React, socket.io, HTML5 Canvas/Javascript, Node, Express, REST API, MySQL</span>
 
-                                                </div>
-                                                <div>
-                                                </div>
                                             </div>
-                                            <p class="card__description">Retro Rumble, features classic arcade games like Space Invaders and Tetris. The Website includes leaderboard functionality so you can compete against other gamers from around the world to see who's the best.</p>
+                                            <div>
+                                            </div>
                                         </div>
-                                    </a>
-                                </li>
-                            </div>
+                                        <p class="card__description">Retro Rumble, features classic arcade games like Space Invaders and Tetris. The Website includes leaderboard functionality so you can compete against other gamers from around the world to see who's the best.</p>
+                                    </div>
+                                </a>
+                                <div className='buttons--under--card'>
+                                    <button onClick={() => openModal(retrovideodemo)}>VIDEO DEMO</button>
+                                    <button className='middle--button'>GALLERY</button>
+                                </div>
+                            </li>
                             <li>
                                 <a href="https://planetjumper.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://planetjumper.netlify.app/')}>
                                     <img className='card--img--planetJumper' src={PlanetJumper} class="card__image" alt="" />
@@ -230,6 +275,10 @@ function NonInteractive() {
                                         <p class="card__description">An interactive space education tool where users can flip between different planets and use spacebar to make the astronaut jump relative to the currently selected planets gravity</p>
                                     </div>
                                 </a>
+                                <div className='buttons--under--card'>
+                                    <button onClick={() => openModal(planetdemo)}>VIDEO DEMO</button>
+                                    <button className='middle--button'>GALLERY</button>
+                                </div>
                             </li>
                             <li>
                                 <a href="https://croucherwoodshop.netlify.app/" class="card" onClick={(e) => handleCardClick(e, 'https://croucherwoodshop.netlify.app/')}>
@@ -248,9 +297,22 @@ function NonInteractive() {
                                         <p class="card__description">A portfolio website built in React utilizing Strapi CMS for backend content management. Client of project can upload and delete pictures themsevles.</p>
                                     </div>
                                 </a>
+                                <div className='buttons--under--card'>
+                                    <button onClick={() => openModal(woodshopdemo)}>VIDEO DEMO</button>
+
+                                    <button className='middle--button'>GALLERY</button>
+                                </div>
                             </li>
 
                         </ul>
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            contentLabel="Video Demo Modal"
+                        >
+                            <ReactPlayer url={videoURL} playing controls width="100%" height="100%" />
+                            <button onClick={closeModal}>Close</button>
+                        </Modal>
                     </div>
                 </div>
             </Element>
