@@ -43,6 +43,7 @@ function NonInteractive() {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [videoURL, setVideoURL] = useState('');  // set state for video URL
 
+
     const openModal = (url) => {  // pass URL as parameter
         setIsOpen(true);
         setVideoURL(url);  // set video URL state
@@ -254,7 +255,7 @@ function NonInteractive() {
                                 </a>
                                 <div className='buttons--under--card'>
                                     <button onClick={() => openModal(retrovideodemo)}>VIDEO DEMO</button>
-                                    <button className='middle--button'>GALLERY</button>
+                                    {/* <button className='middle--button'>GALLERY</button> */}
                                 </div>
                             </li>
                             <li>
@@ -276,7 +277,7 @@ function NonInteractive() {
                                 </a>
                                 <div className='buttons--under--card'>
                                     <button onClick={() => openModal(planetdemo)}>VIDEO DEMO</button>
-                                    <button className='middle--button'>GALLERY</button>
+                                    {/* <button className='middle--button'>GALLERY</button> */}
                                 </div>
                             </li>
                             <li>
@@ -299,7 +300,7 @@ function NonInteractive() {
                                 <div className='buttons--under--card'>
                                     <button onClick={() => openModal(woodshopdemo)}>VIDEO DEMO</button>
 
-                                    <button className='middle--button'>GALLERY</button>
+                                    {/* <button className='middle--button'>GALLERY</button> */}
                                 </div>
                             </li>
 
