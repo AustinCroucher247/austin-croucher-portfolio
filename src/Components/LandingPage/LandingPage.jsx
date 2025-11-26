@@ -1,95 +1,54 @@
-import './LandingPage.scss'
-import ProfilePic from '../../assets-portfolio/ProfilePic.jpg'
-import GitHub from '../../assets-portfolio/GitHub-logo.png'
-import { Link } from 'react-router-dom';
-import LinkedIn from '../../assets-portfolio/LinkedIn.png'
-import gmail from '../../assets-portfolio/Gmail.png'
-import github from '../../assets-portfolio/gitHub-removebg-preview.png'
-// import coding1 from '../../assets-portfolio/coding1.png'
-
+import "./LandingPage.scss";
+import ProfilePic from "../../assets-portfolio/ProfilePic.jpg";
+import { Link } from "react-router-dom";
+import LinkedIn from "../../assets-portfolio/LinkedIn.png";
+import gmail from "../../assets-portfolio/Gmail.png";
+import github from "../../assets-portfolio/gitHub-removebg-preview.png";
 
 function LandingPage() {
-    const openGitHubProfile = () => {
-        window.open("https://github.com/AustinCroucher247", "_blank");
-    }
+  return (
+    <div className="landing">
+      <div className="landing-hero">
+        <div className="landing-photo">
+          <img src={ProfilePic} alt="Austin Croucher" />
+        </div>
 
-    return (
-        <>
-            <body className='landing-page'>
-                <div className="landing-page-container">
-                    <h1 className='landing-page-text'>Hello World! My Name is <span className='landing-page-text-name'> Austin Croucher</span></h1>
-                    <div className='test'>
-                        <div className='profile-picture-container'>
-                            <img className='profile-picture-landing-page' src={ProfilePic} alt="Profile" />
-                            <img
-                                className='github-logo'
-                                src={GitHub}
-                                alt="GitHub Profile"
-                                onClick={openGitHubProfile}
-                                style={{ cursor: 'pointer' }}
-                            />
-                        </div>
-                        <div className="profile-picture-back"></div>
-                    </div>
-                    <hr className='line-under-picture' />
-                </div>
-                <div className="container">
-                    <Link to={'./NonInteractive'}>
-                        <button className="button" style={{ '--color': '#EAC055' }}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Non-Interactive Portfolio
-                        </button>
-                    </Link>
+        <h1 className="landing-title">
+          Hello World! I'm <span>Austin Croucher</span>
+        </h1>
 
-                    {/* <Link to={'./AboutMe'}>
-                        <button className="button" style={{ '--color': '#EAC055' }}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            About Me
-                        </button>
-                    </Link> */}
-                    <Link to={'./Interactive'}>
-                        <button className="button" style={{ '--color': '#EAC055' }}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            Interactive Portfoilio
-                        </button>
-                    </Link>
+        <p className="landing-subtitle">
+          Full-Stack Developer • Problem Solver • Builder
+        </p>
 
-                </div>
-                {/* <div className='coding--carousel'>
-                    <img className='coding--picture' src={coding1} alt="" />
-                </div> */}
-                <div className='container--whole--landing'>
-                    <div className='contact--container'>
-                        <h1 className='contact--text'>Contact Me</h1>
-                    </div>
+        <div className="landing-buttons">
+          <Link to="/NonInteractive" className="landing-btn">
+            Non-Interactive Portfolio
+          </Link>
 
-                    <div className='icons'>
-                        <div className='icons--row'>
-                            <a className='icons--individual' href="https://www.linkedin.com/in/austincroucher/">
-                                <img className='linkedin--contact' src={LinkedIn} alt="" />
-                            </a>
-                            <a className='icons--individual' href="mailto:austin.croucher@gmail.com">
-                                <img className='gmail--contact' src={gmail} alt="" />
-                            </a>
-                            <a className='icons--individual' href="https://github.com/AustinCroucher247">
-                                <img className='git--contact' src={github} alt="" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </body>
+          <Link to="/Interactive" className="landing-btn secondary">
+            Interactive Portfolio
+          </Link>
+        </div>
+      </div>
 
-        </>
-    );
+      <div className="landing-contact">
+        <h2>Contact</h2>
+
+        <div className="contact-grid">
+          <a href="https://www.linkedin.com/in/austincroucher/" target="_blank">
+            <img src={LinkedIn} alt="LinkedIn" />
+          </a>
+          <a href="mailto:austin.croucher@gmail.com">
+            <img src={gmail} alt="Email" />
+          </a>
+          <a href="https://github.com/AustinCroucher247" target="_blank">
+            <img src={github} alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default LandingPage;

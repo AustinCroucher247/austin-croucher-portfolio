@@ -2,7 +2,6 @@
    CLEAN MODERN NAVBAR
    Light theme, responsive, no overlay issues
 ========================================== */
-
 .ac-navbar {
   width: 100%;
   background: #ffffff;
@@ -21,7 +20,6 @@
 }
 
 /* ---------- LOGO ---------- */
-
 .ac-logo {
   display: flex;
   align-items: center;
@@ -49,29 +47,26 @@
 }
 
 /* ---------- DESKTOP MENU ---------- */
-
 .ac-menu {
   display: flex;
   gap: 2rem;
-
-  a {
-    text-decoration: none;
-    color: #444;
-    font-weight: 500;
-    font-size: 1rem;
-
-    &:hover {
-      color: #3b82f6;
-    }
-  }
-
-  @media (max-width: 850px) {
+}
+.ac-menu a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.ac-menu a:hover {
+  color: #3b82f6;
+}
+@media (max-width: 850px) {
+  .ac-menu {
     display: none;
   }
 }
 
 /* ---------- MOBILE MENU ---------- */
-
 .ac-hamburger {
   width: 32px;
   height: 26px;
@@ -81,32 +76,30 @@
   background: none;
   border: none;
   cursor: pointer;
-
-  span {
-    width: 100%;
-    height: 3px;
-    background: #333;
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-
-  &.open span:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-  }
-  &.open span:nth-child(2) {
-    opacity: 0;
-  }
-  &.open span:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-  }
-
-  @media (max-width: 850px) {
+}
+.ac-hamburger span {
+  width: 100%;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.ac-hamburger.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+.ac-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.ac-hamburger.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+@media (max-width: 850px) {
+  .ac-hamburger {
     display: flex;
   }
 }
 
 /* ---------- MOBILE MENU DROPDOWN ---------- */
-
 .ac-menu.open {
   display: flex !important;
   flex-direction: column;
@@ -118,11 +111,10 @@
   padding: 1.6rem 1.2rem;
   border-left: 1px solid #dedede;
   border-bottom: 1px solid #dedede;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   gap: 1.2rem;
-
-  a {
-    padding: 0.6rem 0;
-    font-size: 1.1rem;
-  }
 }
+.ac-menu.open a {
+  padding: 0.6rem 0;
+  font-size: 1.1rem;
+}/*# sourceMappingURL=Header.css.map */

@@ -1,40 +1,39 @@
-import './Header.scss'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Header.scss";
+
 function Header() {
-    const handleNavClick = () => {
-        document.body.classList.toggle('shifted');
-    };
+  const [open, setOpen] = useState(false);
 
-    return (
-        <>
-            <div>
-                <nav>
-                    <div class="navbar">
-                        <div class="container nav-container">
-                            <input class="checkbox" type="checkbox" name="" id="" onClick={handleNavClick} />
-                            <div class="hamburger-lines">
-                                <span class="line line1"></span>
-                                <span class="line line2"></span>
-                                <span class="line line3"></span>
-                            </div>
-                            <div class="logo">
-                                <h1>Austin Croucher</h1>
-                                <h1>Full-Stack Developer</h1>
-                            </div>
-                            <div class="menu-items">
+  return (
+    <header className="ac-navbar">
+      <div className="ac-nav-inner">
 
-                                <Link to={'/'}> <li><a href="/"> Go Home</a></li></Link>
-                                {/* <li><a href="/">about</a></li>
-                                <li><a href="/">blogs</a></li>
-                                <li><a href="/">portfolio</a></li>
-                                <li><a href="/">contact</a></li> */}
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </>
-    );
+        {/* ---------- LOGO ---------- */}
+        <div className="ac-logo">
+          <span className="ac-logo-icon">AC</span>
+          <span className="ac-logo-text">Austin Croucher</span>
+        </div>
+
+        {/* ---------- HAMBURGER ---------- */}
+        <button
+          className={`ac-hamburger ${open ? "open" : ""}`}
+          onClick={() => setOpen(!open)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* ---------- NAV MENU ---------- */}
+        <nav className={`ac-menu ${open ? "open" : ""}`}>
+          <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+          <Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link>
+          <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+        </nav>
+      </div>
+    </header>
+  );
 }
 
 export default Header;
