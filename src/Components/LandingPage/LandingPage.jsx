@@ -6,10 +6,10 @@ import gmail from "../../assets-portfolio/Gmail.png";
 import github from "../../assets-portfolio/gitHub-removebg-preview.png";
 
 function LandingPage() {
-  return (
+  return ( 
     <div className="landing">
       <div className="landing-hero">
-        <div className="landing-photo">
+        <div className="landing-photo"> 
           <img src={ProfilePic} alt="Austin Croucher" />
         </div>
 
@@ -36,13 +36,13 @@ function LandingPage() {
         <h2>Contact</h2>
 
         <div className="contact-grid">
-          <a href="https://www.linkedin.com/in/austincroucher/" target="_blank">
+          <a href="https://www.linkedin.com/in/austincroucher/" target="_blank" rel="noreferrer">
             <img src={LinkedIn} alt="LinkedIn" />
           </a>
           <a href="mailto:austin.croucher@gmail.com">
             <img src={gmail} alt="Email" />
           </a>
-          <a href="https://github.com/AustinCroucher247" target="_blank">
+          <a href="https://github.com/AustinCroucher247" target="_blank" rel="noreferrer">
             <img src={github} alt="GitHub" />
           </a>
         </div>

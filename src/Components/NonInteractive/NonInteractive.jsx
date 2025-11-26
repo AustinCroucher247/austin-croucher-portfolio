@@ -19,17 +19,17 @@ import cms from "../../assets-portfolio/headless-cms-bnr-img.png";
 import strapi from "../../assets-portfolio/strapi.png";
 import sanity from "../../assets-portfolio/sanity.svg";
 import php from "../../assets-portfolio/PHP.png";
-import tailwind from "../../assets-portfolio/tailwind-white1.png";
+// import tailwind from "../../assets-portfolio/tailwind-white1.png";
 
 import RetroRumble from "../../assets-portfolio/RetroNoBlue.jpg";
 import PlanetJumper from "../../assets-portfolio/PlanetJumper.jpg";
 import DPSC from "../../assets-portfolio/WoodshopThumbnail.png";
 
-import ArcadeMachine from "../../assets-portfolio/Arcade.avif";
-import Astronaut from "../../assets-portfolio/SpaceAvatarWithWhite.jpg";
-import DPSCLogo from "../../assets-portfolio/logo.png";
+// import ArcadeMachine from "../../assets-portfolio/Arcade.avif";
+// import Astronaut from "../../assets-portfolio/SpaceAvatarWithWhite.jpg";
+// import DPSCLogo from "../../assets-portfolio/logo.png";
 
-import DownArrow from "../../assets-portfolio/downarrow.png";
+// import DownArrow from "../../assets-portfolio/downarrow.png";
 
 import LinkedIn from "../../assets-portfolio/LinkedIn.png";
 import gmail from "../../assets-portfolio/Gmail.png";
@@ -326,4 +326,4 @@ function NonInteractive() {
   );
 }
 
-export default NonInteractive;
+export default NonInteractive; 
