@@ -6,10 +6,10 @@ import gmail from "../../assets-portfolio/Gmail.png";
 import github from "../../assets-portfolio/gitHub-removebg-preview.png";
 
 function LandingPage() {
-  return (
+  return ( 
     <div className="landing">
       <div className="landing-hero">
-        <div className="landing-photo">
+        <div className="landing-photo"> 
           <img src={ProfilePic} alt="Austin Croucher" />
         </div>
 

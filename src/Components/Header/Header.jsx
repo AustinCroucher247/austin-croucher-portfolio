@@ -30,7 +30,7 @@ function Header() {
           <Link to="/" onClick={() => setOpen(false)}>Home</Link>
           <Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link>
           <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
-        </nav>
+        </nav> 
       </div>
     </header>
   );
