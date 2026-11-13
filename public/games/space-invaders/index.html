@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders — Retro Rumble</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #000;
+        color: #fff;
+        font-family: ui-monospace, 'Geist Mono', Menlo, Consolas, monospace;
+        overflow: hidden;
+      }
+      .stage {
+        position: relative;
+        width: min(100vw, calc(100vh * 16 / 9));
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .hud {
+        position: absolute;
+        inset: 12px 16px auto;
+        display: flex;
+        gap: 24px;
+        margin: 0;
+        font-size: clamp(10px, 1.3vw, 13px);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+      .hud span {
+        opacity: 0.6;
+        margin-right: 6px;
+      }
+      .keys {
+        position: absolute;
+        inset: auto 0 10px;
+        margin: 0;
+        text-align: center;
+        font-size: clamp(9px, 1.1vw, 12px);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .touch {
+        display: none;
+      }
+      @media (pointer: coarse) {
+        .keys {
+          display: none;
+        }
+        .touch {
+          position: fixed;
+          inset: auto 0 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1.4fr;
+          gap: 8px;
+          padding: 10px;
+        }
+        .touch button {
+          height: 16vh;
+          max-height: 72px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.08);
+          color: #fff;
+          font: inherit;
+          font-size: 18px;
+          touch-action: none;
+          user-select: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <p class="hud">
+        <b><span>Score</span><i id="score">0</i></b>
+        <b><span>Best</span><i id="best">0</i></b>
+        <b><span>Lives</span><i id="lives"></i></b>
+      </p>
+      <canvas></canvas>
+      <p class="keys">A D or ← → move · Space fire · P pause</p>
+    </div>
+    <div class="touch">
+      <button type="button" data-key="left" aria-label="Move left">←</button>
+      <button type="button" data-key="right" aria-label="Move right">→</button>
+      <button type="button" data-key="fire">FIRE</button>
+    </div>
+    <script src="./game.js"></script>
+  </body>
+</html>
