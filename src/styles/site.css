@@ -1521,8 +1521,20 @@ button.hub__tile {
   inset: 0;
   width: 100%;
   height: 100%;
-  -webkit-mask-image: radial-gradient(90% 95% at 88% 28%, #000 25%, transparent 78%);
-  mask-image: radial-gradient(90% 95% at 88% 28%, #000 25%, transparent 78%);
+  /* The fade toward the text is drawn in the canvas itself (see HeroField). */
+}
+
+/* While the name intro plays, the headline and the rest of the hero wait for it. */
+.intro-play .word > * {
+  animation-delay: calc(var(--i) * 55ms + 1500ms);
+}
+
+.intro-play .rise {
+  animation-delay: calc(var(--d) * 110ms + 2000ms);
+}
+
+.intro-play .hero__id.rise {
+  animation-delay: 1300ms;
 }
 
 .word {
