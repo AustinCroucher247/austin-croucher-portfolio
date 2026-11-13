@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tetris — Retro Rumble</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(100deg, #3b0a5c, #9b5aa8);
+        color: #fff;
+        font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        overflow: hidden;
+        /* Everything below is sized in em, so the whole game scales to fit. */
+        font-size: min(1vh, 1.3vw);
+      }
+      .game {
+        display: flex;
+        align-items: stretch;
+        gap: 4em;
+        height: 92em;
+      }
+      .well {
+        position: relative;
+        height: 100%;
+        aspect-ratio: 1 / 2;
+        border-radius: 1.4em;
+        overflow: hidden;
+        box-shadow: 0 2em 5em rgba(0, 0, 0, 0.35);
+      }
+      #board {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        gap: 1.2em;
+        padding: 3em;
+        background: rgba(20, 0, 40, 0.78);
+        text-align: center;
+      }
+      .overlay[hidden] {
+        display: none;
+      }
+      .overlay h1 {
+        margin: 0;
+        font-size: 5em;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .overlay p {
+        margin: 0;
+        font-size: 2.1em;
+        opacity: 0.8;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24em;
+      }
+      .next {
+        padding: 1em;
+        border-radius: 1.4em;
+        background: rgba(40, 0, 70, 0.28);
+      }
+      .next canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .label {
+        margin: 0;
+        font-size: 1.9em;
+        opacity: 0.85;
+      }
+      .value {
+        margin: 0 0 0.3em;
+        font-size: 5.4em;
+        line-height: 1.05;
+        font-variant-numeric: tabular-nums;
+      }
+      .keys {
+        margin: 0;
+        font-size: 1.6em;
+        line-height: 1.6;
+        opacity: 0.7;
+      }
+      .touch {
+        display: none;
+      }
+      @media (pointer: coarse) {
+        body {
+          font-size: min(0.78vh, 1.3vw);
+          place-items: start center;
+          padding-top: 2vh;
+        }
+        .keys {
+          display: none;
+        }
+        .touch {
+          position: fixed;
+          inset: auto 0 0;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 6px;
+          padding: 8px;
+        }
+        .touch button {
+          height: 13vh;
+          max-height: 64px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 12px;
+          background: rgba(20, 0, 40, 0.5);
+          color: #fff;
+          font-size: 20px;
+          touch-action: manipulation;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game">
+      <div class="well">
+        <canvas id="board"></canvas>
+        <div class="overlay" id="overlay">
+          <h1 id="overlay-title">Tetris</h1>
+          <p id="overlay-hint">Press Enter to start.</p>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="next" aria-label="Next pieces">
+          <canvas id="next" width="140" height="270"></canvas>
+        </div>
+        <div>
+          <p class="label">Level</p>
+          <p class="value" id="level">1</p>
+          <p class="label">Lines To Level</p>
+          <p class="value" id="lines">10</p>
+          <p class="label">Points</p>
+          <p class="value" id="points">0</p>
+          <p class="label">Best</p>
+          <p class="value" id="best">0</p>
+        </div>
+        <p class="keys">← → move · ↑ rotate<br />↓ soft drop · Space hard drop<br />P pause</p>
+      </div>
+    </div>
+    <div class="touch">
+      <button type="button" data-code="ArrowLeft" aria-label="Move left">←</button>
+      <button type="button" data-code="ArrowUp" aria-label="Rotate">⟳</button>
+      <button type="button" data-code="ArrowDown" aria-label="Soft drop">↓</button>
+      <button type="button" data-code="Space" aria-label="Hard drop">⤓</button>
+      <button type="button" data-code="ArrowRight" aria-label="Move right">→</button>
+    </div>
+    <script src="./game.js"></script>
+  </body>
+</html>
