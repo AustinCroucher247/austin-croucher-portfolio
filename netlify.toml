@@ -1,0 +1,8 @@
+# Netlify build settings. Kept in the repo so the build does not depend on dashboard defaults.
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # Vite 5 needs Node 18 or newer. The site's old default image used an earlier version.
+  NODE_VERSION = "22"
