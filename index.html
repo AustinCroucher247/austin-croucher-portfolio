@@ -46,6 +46,15 @@
             document.documentElement.dataset.theme = saved;
           }
         } catch (e) {}
+
+        // Play the name intro once per visit, and never for reduced-motion visitors.
+        try {
+          var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!calm && !sessionStorage.getItem('intro-played')) {
+            sessionStorage.setItem('intro-played', '1');
+            document.documentElement.classList.add('intro-play');
+          }
+        } catch (e) {}
       })();
     </script>
   </head>
