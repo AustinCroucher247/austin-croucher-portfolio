@@ -3,6 +3,7 @@ import SectionHead from './SectionHead.jsx';
 import HubMock from './HubMock.jsx';
 import LoopVideo from './LoopVideo.jsx';
 import Stats from './Stats.jsx';
+import ColonyDemo from './ColonyDemo.jsx';
 
 /**
  * A lead visual with a strip of thumbnails. Every image opens the lightbox.
@@ -93,6 +94,8 @@ function Case({ project, number, onOpen }) {
           ))}
         </ul>
       </div>
+
+      {project.demo === 'colony' ? <ColonyDemo /> : null}
 
       {project.links ? (
         <div className="case__links" data-reveal>

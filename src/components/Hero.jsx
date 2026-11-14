@@ -40,7 +40,7 @@ export default function Hero() {
         </h1>
 
         <p className="hero__lede rise" style={{ '--d': 1 }}>
-          I’m Austin. For the past three years I’ve shipped client work at The Design Cell. Outside
+          I’m Austin. For over three years I’ve shipped client work at The Design Cell. Outside
           of that I build things end to end: a content-driven site on Next.js and Sanity, a home app
           my household runs on every day, and two games in Unity.
         </p>

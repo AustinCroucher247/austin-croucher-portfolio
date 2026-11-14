@@ -183,6 +183,7 @@ export const projects = [
       },
     ],
     stack: ['Unity 6', 'C#', 'URP', 'NavMesh', 'Blender', 'Claude Code'],
+    demo: 'colony',
     stats: [
       { value: 328, label: 'C# scripts' },
       { value: 62, suffix: 'k', label: 'lines of C#' },
