@@ -1,7 +1,10 @@
 const items = [
   'React',
   'JavaScript',
+  'Next.js',
   'TypeScript',
+  'Sanity',
+  'Tailwind',
   'PHP',
   'Node',
   'Firebase',

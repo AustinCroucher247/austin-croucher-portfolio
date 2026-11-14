@@ -394,3 +394,12 @@ kbd {
     display: none;
   }
 }
+
+/* ---------- Case study links ---------- */
+
+.case__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
