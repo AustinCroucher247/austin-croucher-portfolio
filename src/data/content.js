@@ -42,7 +42,6 @@ export const profile = {
   location: 'Toronto area, Canada',
   email: 'austin.croucher@gmail.com',
   linkedin: 'https://www.linkedin.com/in/austincroucher/',
-  github: 'https://github.com/AustinCroucher247',
   resume: '/Austin-Croucher-Resume.pdf',
 };
 
@@ -70,10 +69,7 @@ export const projects = [
       'A studio site for my two games, built the way a marketing web team builds one: editors assemble pages from blocks in Sanity, and the site serves them as fast static pages.',
     body:
       'I built it to practise the exact loop a web team lives in: a clear content model, a publishing flow that is quick and hard to get wrong, experiments on live pages, and performance that comes from architecture rather than tricks. Search is ranked by Cohere Rerank.',
-    links: [
-      { label: 'Visit the live site', href: 'https://games.austincroucher.com' },
-      { label: 'Source on GitHub', href: 'https://github.com/AustinCroucher247/studio-site', variant: 'outline' },
-    ],
+    links: [{ label: 'Visit the live site', href: 'https://games.austincroucher.com' }],
     stats: [
       { value: 8, label: 'page-builder blocks' },
       { value: 3, label: 'apps in one monorepo' },
@@ -298,7 +294,7 @@ export const experience = [
     role: 'Web Developer',
     org: 'The Design Cell',
     meta: 'Full-time · Burlington, ON',
-    text: 'Agency development across the full life of a project: CMS-driven websites, contest and rebate platforms, learning modules and internal dashboards, built and maintained for client brands.',
+    text: 'Agency development across the full life of a project: custom-coded websites and web applications in PHP and JavaScript, contest and rebate platforms, learning modules and internal dashboards, built and maintained for client brands.',
   },
   {
     dates: '2026 — Now',

@@ -44,7 +44,6 @@ export default function CommandPalette({ open, onClose, onOpenMedia, onToast }) 
       },
       { group: 'Do', label: 'Switch light / dark theme', run: () => toggleTheme() },
       { group: 'Links', label: 'LinkedIn', hint: '↗', run: () => window.open(profile.linkedin, '_blank', 'noopener') },
-      { group: 'Links', label: 'GitHub', hint: '↗', run: () => window.open(profile.github, '_blank', 'noopener') },
     ],
     [onOpenMedia, onToast]
   );
