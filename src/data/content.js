@@ -7,6 +7,10 @@ import ashesCrafting from '../assets/ashes-crafting.webp';
 import ashesOutpost from '../assets/ashes-outpost.webp';
 import ashesColony from '../assets/ashes-colony.webp';
 import ashesFireworks from '../assets/ashes-fireworks.webp';
+import studioHome from '../assets/studio-home.webp';
+import studioAshes from '../assets/studio-ashes.webp';
+import studioHollow from '../assets/studio-hollow.webp';
+import studioPost from '../assets/studio-post.webp';
 import hollowCorridor from '../assets/hollow-corridor.webp';
 import hollowRedLight from '../assets/hollow-red-light.webp';
 import hollowRoom from '../assets/hollow-room.webp';
@@ -45,7 +49,7 @@ export const profile = {
 export const facts = [
   { label: 'Now', value: 'Web Developer at The Design Cell' },
   { label: 'Based', value: 'Toronto area, Ontario' },
-  { label: 'Works in', value: 'React, JavaScript, PHP, Node' },
+  { label: 'Works in', value: 'React, Next.js, TypeScript, Sanity' },
   { label: 'Open to', value: 'Web development roles' },
 ];
 
@@ -56,6 +60,61 @@ export const facts = [
  *   'video'  – a muted, looping clip
  */
 export const projects = [
+  {
+    id: 'night-shift-games',
+    title: 'Night Shift Games',
+    kind: 'Web · Next.js + Sanity',
+    year: '2026',
+    status: 'Live',
+    summary:
+      'A studio site for my two games, built the way a marketing web team builds one: editors assemble pages from blocks in Sanity, and the site serves them as fast static pages.',
+    body:
+      'I built it to practise the exact loop a web team lives in: a clear content model, a publishing flow that is quick and hard to get wrong, experiments on live pages, and performance that comes from architecture rather than tricks. Search is ranked by Cohere Rerank.',
+    links: [
+      { label: 'Visit the live site', href: 'https://games.austincroucher.com' },
+      { label: 'Source on GitHub', href: 'https://github.com/AustinCroucher247/studio-site', variant: 'outline' },
+    ],
+    stats: [
+      { value: 8, label: 'page-builder blocks' },
+      { value: 3, label: 'apps in one monorepo' },
+      { value: 2, label: 'A/B buckets, all static' },
+      { value: 1, label: 'webhook to publish live' },
+    ],
+    highlights: [
+      {
+        title: 'A page builder with guard rails',
+        text: 'Editors stack hero, feature grid, gallery, stats, showcase, devlog and call-to-action blocks. Images cannot be published without alt text, links are validated, and each block previews as a readable outline of the page.',
+      },
+      {
+        title: 'A/B tests without slow pages',
+        text: 'Every page is prerendered once per bucket. A proxy assigns visitors by cookie and rewrites to the right copy, so an experiment adds no work at request time. Editors switch tests on from a tab in the hero block.',
+      },
+      {
+        title: 'Publishing that shows up in seconds',
+        text: 'Queries are cached and tagged. A Sanity webhook expires the tag when an editor presses Publish, and the next visit rebuilds from fresh content.',
+      },
+      {
+        title: 'Search that understands the question',
+        text: 'Cohere Rerank scores each devlog post, game and page against what was asked, so "can I play with a gamepad" finds a post that never uses the word. It falls back to keyword matching if the API is unavailable.',
+      },
+    ],
+    stack: ['Next.js 16', 'TypeScript', 'Tailwind 4', 'Sanity', 'Cohere Rerank', 'Turborepo', 'pnpm', 'Vercel'],
+    media: {
+      type: 'gallery',
+      images: [
+        { src: studioHome, caption: 'Home page, with the hero served from a static bucket', alt: 'The Night Shift Games home page: a headline over key art of a crashed ship.' },
+        { src: studioAshes, caption: 'A game page assembled from Sanity blocks', alt: 'The From Ashes to Orbit page with a hero, feature grid and stats row.' },
+        { src: studioHollow, caption: 'Hollow Ward, with the flashlight hero', alt: 'The Hollow Ward page, a dark corridor lit only by a cursor-following beam.' },
+        { src: studioPost, caption: 'A devlog post from the same content model', alt: 'A devlog post titled Saving the whole ward.' },
+      ],
+    },
+    flow: [
+      { title: 'Sanity Studio', text: 'Typed schemas, validation and previews for editors.' },
+      { title: 'Webhook', text: 'Publishing expires the tagged cache.' },
+      { title: 'Next.js on Vercel', text: 'Static pages per A/B bucket, rebuilt on demand.' },
+      { title: 'Cohere Rerank', text: 'Ranks results by meaning when a visitor searches.' },
+    ],
+  },
   {
     id: 'household-hq',
     title: 'Household HQ',
@@ -261,13 +320,6 @@ export const experience = [
     meta: 'Full-time · Toronto',
     text: 'Ran a $3M-a-year restaurant and a team of 85. It is where I learned to stay calm, plan ahead and talk to people when things go sideways.',
   },
-  {
-    dates: '2015 — 2019',
-    role: 'Bar Manager',
-    org: 'Milestones',
-    meta: 'Full-time · Richmond Hill, ON',
-    text: 'Designed an inventory system that produced the highest alcohol sales and lowest cost of any Ontario location, by a 10% margin.',
-  },
 ];
 
 export const education = [
@@ -277,7 +329,7 @@ export const education = [
 ];
 
 export const toolbox = [
-  { label: 'Front end', items: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS / Sass', 'Tailwind'] },
+  { label: 'Front end', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS / Sass', 'Tailwind'] },
   { label: 'Back end', items: ['Node', 'Express', 'PHP', 'MySQL', 'Firebase'] },
   { label: 'Content', items: ['WordPress', 'Strapi', 'Sanity'] },
   { label: 'Also', items: ['Unity / C#', 'LLM APIs and tool use', 'Git', 'Netlify'] },

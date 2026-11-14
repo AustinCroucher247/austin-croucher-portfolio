@@ -94,6 +94,22 @@ function Case({ project, number, onOpen }) {
         </ul>
       </div>
 
+      {project.links ? (
+        <div className="case__links" data-reveal>
+          {project.links.map((item) => (
+            <a
+              key={item.href}
+              className={`button${item.variant === 'outline' ? '' : ' button--solid'}`}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.label} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      ) : null}
+
       {project.flow ? (
         <div className="flow" data-reveal>
           <p className="eyebrow">How it fits together</p>
@@ -114,8 +130,8 @@ function Case({ project, number, onOpen }) {
 export default function Work({ onOpen }) {
   return (
     <section className="section container" id="work">
-      <SectionHead index="01" label="Selected work" title="Three things I’m building now.">
-        A web app my household depends on, and two games that keep my systems thinking honest.
+      <SectionHead index="01" label="Selected work" title="Four things I’ve built.">
+        A content-driven site on the stack I want to work in, a web app my household depends on, and two games that keep my systems thinking honest.
       </SectionHead>
       {projects.map((project, i) => (
         <Case key={project.id} project={project} number={`0${i + 1}`} onOpen={onOpen} />
