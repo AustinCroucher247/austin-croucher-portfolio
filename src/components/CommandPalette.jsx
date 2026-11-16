@@ -18,6 +18,14 @@ export default function CommandPalette({ open, onClose, onOpenMedia, onToast }) 
     () => [
       ...projects.map((project) => ({ group: 'Work', label: project.title, hint: project.kind, run: jump(project.id) })),
       { group: 'Work', label: 'Retro Rumble', hint: 'Earlier work', run: jump('earlier') },
+      ...projects
+        .filter((project) => project.trailer)
+        .map((project) => ({
+          group: 'Play',
+          label: `Watch the ${project.title} trailer`,
+          hint: project.trailer.length,
+          run: () => onOpenMedia({ type: 'video', title: `${project.title} trailer`, src: project.trailer.src }),
+        })),
       ...earlier.feature.games.map((game) => ({
         group: 'Play',
         label: `Play ${game.title}`,
@@ -44,6 +52,7 @@ export default function CommandPalette({ open, onClose, onOpenMedia, onToast }) 
       },
       { group: 'Do', label: 'Switch light / dark theme', run: () => toggleTheme() },
       { group: 'Links', label: 'LinkedIn', hint: '↗', run: () => window.open(profile.linkedin, '_blank', 'noopener') },
+      { group: 'Links', label: 'GitHub', hint: '↗', run: () => window.open(profile.github, '_blank', 'noopener') },
     ],
     [onOpenMedia, onToast]
   );

@@ -7,6 +7,8 @@ import ashesCrafting from '../assets/ashes-crafting.webp';
 import ashesOutpost from '../assets/ashes-outpost.webp';
 import ashesColony from '../assets/ashes-colony.webp';
 import ashesFireworks from '../assets/ashes-fireworks.webp';
+import trailerHollow from '../assets/trailer-hollow.webp';
+import trailerHousehold from '../assets/trailer-household.webp';
 import studioHome from '../assets/studio-home.webp';
 import studioAshes from '../assets/studio-ashes.webp';
 import studioHollow from '../assets/studio-hollow.webp';
@@ -42,6 +44,7 @@ export const profile = {
   location: 'Toronto area, Canada',
   email: 'austin.croucher@gmail.com',
   linkedin: 'https://www.linkedin.com/in/austincroucher/',
+  github: 'https://github.com/AustinCroucher247',
   resume: '/Austin-Croucher-Resume.pdf',
 };
 
@@ -140,6 +143,12 @@ export const projects = [
       },
     ],
     stack: ['JavaScript', 'HTML', 'CSS', 'Firebase Auth', 'Firestore', 'PWA', 'Claude API', 'TMDB API', 'Netlify'],
+    trailer: {
+      src: '/media/household-hq-trailer.mp4',
+      poster: trailerHousehold,
+      length: '0:30',
+      alt: 'Household HQ trailer: the hub, calendar, recipes, movie night, stretches, groceries and budget screens.',
+    },
     media: { type: 'hub' },
     stats: [
       { value: 6, label: 'apps behind one login' },
@@ -230,6 +239,13 @@ export const projects = [
       },
     ],
     stack: ['Unity 6', 'C#', 'URP', 'Blender', 'Claude Code'],
+    trailer: {
+      src: '/media/hollow-ward-trailer.mp4',
+      poster: trailerHollow,
+      length: '0:30',
+      sound: true,
+      alt: 'Hollow Ward trailer: a flashlight beam on a crawler in a dark tiled room.',
+    },
     stats: [
       { value: 199, label: 'C# scripts' },
       { value: 31, suffix: 'k', label: 'lines of C#' },

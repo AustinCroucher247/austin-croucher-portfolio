@@ -49,6 +49,11 @@ export default function Contact({ onToast }) {
               </a>
             </li>
             <li>
+              <a href={profile.github} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </li>
+            <li>
               <a href={profile.resume} target="_blank" rel="noreferrer">
                 Résumé (PDF)
               </a>
