@@ -18,6 +18,14 @@ export default function CommandPalette({ open, onClose, onOpenMedia, onToast }) 
     () => [
       ...projects.map((project) => ({ group: 'Work', label: project.title, hint: project.kind, run: jump(project.id) })),
       { group: 'Work', label: 'Retro Rumble', hint: 'Earlier work', run: jump('earlier') },
+      ...projects
+        .filter((project) => project.trailer)
+        .map((project) => ({
+          group: 'Play',
+          label: `Watch the ${project.title} trailer`,
+          hint: project.trailer.length,
+          run: () => onOpenMedia({ type: 'video', title: `${project.title} trailer`, src: project.trailer.src }),
+        })),
       ...earlier.feature.games.map((game) => ({
         group: 'Play',
         label: `Play ${game.title}`,

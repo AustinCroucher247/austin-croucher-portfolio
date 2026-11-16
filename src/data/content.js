@@ -7,6 +7,8 @@ import ashesCrafting from '../assets/ashes-crafting.webp';
 import ashesOutpost from '../assets/ashes-outpost.webp';
 import ashesColony from '../assets/ashes-colony.webp';
 import ashesFireworks from '../assets/ashes-fireworks.webp';
+import trailerHollow from '../assets/trailer-hollow.webp';
+import trailerHousehold from '../assets/trailer-household.webp';
 import studioHome from '../assets/studio-home.webp';
 import studioAshes from '../assets/studio-ashes.webp';
 import studioHollow from '../assets/studio-hollow.webp';
@@ -70,10 +72,7 @@ export const projects = [
       'A studio site for my two games, built the way a marketing web team builds one: editors assemble pages from blocks in Sanity, and the site serves them as fast static pages.',
     body:
       'I built it to practise the exact loop a web team lives in: a clear content model, a publishing flow that is quick and hard to get wrong, experiments on live pages, and performance that comes from architecture rather than tricks. Search is ranked by Cohere Rerank.',
-    links: [
-      { label: 'Visit the live site', href: 'https://games.austincroucher.com' },
-      { label: 'Source on GitHub', href: 'https://github.com/AustinCroucher247/studio-site', variant: 'outline' },
-    ],
+    links: [{ label: 'Visit the live site', href: 'https://games.austincroucher.com' }],
     stats: [
       { value: 8, label: 'page-builder blocks' },
       { value: 3, label: 'apps in one monorepo' },
@@ -144,6 +143,12 @@ export const projects = [
       },
     ],
     stack: ['JavaScript', 'HTML', 'CSS', 'Firebase Auth', 'Firestore', 'PWA', 'Claude API', 'TMDB API', 'Netlify'],
+    trailer: {
+      src: '/media/household-hq-trailer.mp4',
+      poster: trailerHousehold,
+      length: '0:30',
+      alt: 'Household HQ trailer: the hub, calendar, recipes, movie night, stretches, groceries and budget screens.',
+    },
     media: { type: 'hub' },
     stats: [
       { value: 6, label: 'apps behind one login' },
@@ -234,6 +239,13 @@ export const projects = [
       },
     ],
     stack: ['Unity 6', 'C#', 'URP', 'Blender', 'Claude Code'],
+    trailer: {
+      src: '/media/hollow-ward-trailer.mp4',
+      poster: trailerHollow,
+      length: '0:30',
+      sound: true,
+      alt: 'Hollow Ward trailer: a flashlight beam on a crawler in a dark tiled room.',
+    },
     stats: [
       { value: 199, label: 'C# scripts' },
       { value: 31, suffix: 'k', label: 'lines of C#' },
@@ -298,7 +310,7 @@ export const experience = [
     role: 'Web Developer',
     org: 'The Design Cell',
     meta: 'Full-time · Burlington, ON',
-    text: 'Agency development across the full life of a project: CMS-driven websites, contest and rebate platforms, learning modules and internal dashboards, built and maintained for client brands.',
+    text: 'Agency development across the full life of a project: custom-coded websites and web applications in PHP and JavaScript, contest and rebate platforms, learning modules and internal dashboards, built and maintained for client brands.',
   },
   {
     dates: '2026 — Now',

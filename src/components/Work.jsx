@@ -65,6 +65,23 @@ function Case({ project, number, onOpen }) {
         </p>
       </header>
 
+      {project.trailer ? (
+        <div className="case__trailer" data-reveal>
+          <button
+            type="button"
+            className="trailer"
+            onClick={() => onOpen({ type: 'video', title: `${project.title} trailer`, src: project.trailer.src })}
+          >
+            <img src={project.trailer.poster} alt={project.trailer.alt} loading="lazy" />
+            <span className="trailer__play" aria-hidden="true" />
+            <span className="trailer__label">
+              Watch the trailer · {project.trailer.length}
+              {project.trailer.sound ? ' · sound on' : ''}
+            </span>
+          </button>
+        </div>
+      ) : null}
+
       <div className="case__media" data-reveal>
         {project.media.type === 'hub' ? (
           <HubMock />
